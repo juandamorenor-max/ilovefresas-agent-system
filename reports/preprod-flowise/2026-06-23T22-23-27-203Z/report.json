@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-06-23T22:23:27.205Z",
+  "flowiseHost": "https://cloud.flowiseai.com",
+  "flowiseFlowId": "e52f27b3-06e2-4fb0-b853-30e936b99839",
+  "strict": false,
+  "totals": {
+    "cases": 1,
+    "passed": 0,
+    "failed": 1,
+    "turns": 12
+  },
+  "results": [
+    {
+      "id": "pp-001",
+      "name": "fresas tradicionales, oblea y malteada con datos en partes",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-001:e91c9b85-ce7c-4e85-a0b1-b7602b281c05",
+      "passed": false,
+      "failures": [
+        "turn 1 request error: FLOWISE_API_HOST is required.",
+        "turn 2 request error: FLOWISE_API_HOST is required.",
+        "turn 3 request error: FLOWISE_API_HOST is required.",
+        "turn 4 request error: FLOWISE_API_HOST is required.",
+        "turn 5 request error: FLOWISE_API_HOST is required.",
+        "turn 6 request error: FLOWISE_API_HOST is required.",
+        "turn 7 request error: FLOWISE_API_HOST is required.",
+        "turn 8 request error: FLOWISE_API_HOST is required.",
+        "turn 9 request error: FLOWISE_API_HOST is required.",
+        "turn 10 request error: FLOWISE_API_HOST is required.",
+        "turn 11 request error: FLOWISE_API_HOST is required.",
+        "turn 12 request error: FLOWISE_API_HOST is required.",
+        "turn 1 route expected general, got missing",
+        "turn 2 route expected pedido, got missing",
+        "turn 3 route expected pedido, got missing",
+        "turn 4 route expected pedido, got missing",
+        "turn 5 route expected pedido, got missing",
+        "turn 6 route expected pedido, got missing",
+        "turn 7 route expected pedido, got missing",
+        "turn 8 route expected datos, got missing",
+        "turn 9 route expected datos, got missing",
+        "turn 10 route expected datos, got missing",
+        "turn 11 route expected datos, got missing",
+        "turn 12 route expected datos, got missing",
+        "final route expected datos, got missing",
+        "missing text somewhere: \"Resumen\"",
+        "missing text somewhere: \"Domicilio\"",
+        "missing text somewhere: \"Total\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "holaa",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 1,
+          "message": "quiero unas frezas tradicionales",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 2,
+          "message": "tambien una oblea",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 3,
+          "message": "arequipe",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 4,
+          "message": "y una malteada",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 5,
+          "message": "oreo",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 6,
+          "message": "no mas",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 7,
+          "message": "soy Camila",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 8,
+          "message": "cra 39A #41-99",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 9,
+          "message": "barrio Cabecera del Llano",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 10,
+          "message": "referencia porteria azul",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        },
+        {
+          "index": 11,
+          "message": "pago neqi",
+          "nodeLabels": [],
+          "responseText": "",
+          "sourceField": "error",
+          "error": "FLOWISE_API_HOST is required."
+        }
+      ]
+    }
+  ]
+}

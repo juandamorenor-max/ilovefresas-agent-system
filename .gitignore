@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+flowise/exports/*
+!flowise/exports/.gitkeep
+n8n/exports/*
+!n8n/exports/.gitkeep
+*.log
+tmp_flowise_assets/
+tmp_menu_pages/

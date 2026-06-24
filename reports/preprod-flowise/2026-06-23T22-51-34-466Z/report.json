@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-06-23T22:51:43.692Z",
+  "flowiseHost": "https://cloud.flowiseai.com",
+  "flowiseFlowId": "e52f27b3-06e2-4fb0-b853-30e936b99839",
+  "strict": false,
+  "totals": {
+    "cases": 1,
+    "passed": 0,
+    "failed": 1,
+    "turns": 2
+  },
+  "results": [
+    {
+      "id": "pp-014",
+      "name": "confirmacion temprana no confirma pedido incompleto",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-014:a415f02d-58a2-416f-8137-eba028f62bed",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"datos\"",
+        "missing text somewhere: \"Nombre\"",
+        "missing any text somewhere: \"Direccion\" | \"Dirección\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero unas fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Quieres agregar otro producto al pedido?",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "si",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Claro, que otro producto quieres agregar?",
+          "sourceField": "text"
+        }
+      ]
+    }
+  ]
+}

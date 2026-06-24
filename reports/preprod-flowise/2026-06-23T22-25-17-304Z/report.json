@@ -1,0 +1,2572 @@
+{
+  "generatedAt": "2026-06-23T22:38:22.396Z",
+  "flowiseHost": "https://cloud.flowiseai.com",
+  "flowiseFlowId": "e52f27b3-06e2-4fb0-b853-30e936b99839",
+  "strict": true,
+  "totals": {
+    "cases": 30,
+    "passed": 9,
+    "failed": 21,
+    "turns": 150
+  },
+  "results": [
+    {
+      "id": "pp-001",
+      "name": "fresas tradicionales, oblea y malteada con datos en partes",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-001:bedb57b4-f8eb-4f36-acb7-8b9372495a83",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"Resumen\"",
+        "missing text somewhere: \"Total\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "holaa",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "Hola! Bienvenido a I Love Fresas Barranquilla. Que se te antoja hoy?",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "quiero unas frezas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "tambien una oblea",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Tambien una oblea. Cual de estas quieres: Arequipe, Arequipe crema, Arequipe dulce de mora, Arequipe queso, Nutella, Arequipe crema y dulce de mora, Arequipe queso y crema, Crema y Nutella, Arequipe queso crema dulce de mora, Arequipe queso crema fresa, Arequipe queso crema durazno, Arequipe queso crema dulce de mora fresa o Arequipe queso crema dulce de mora durazno?",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Para que producto quieres arequipe?",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "y una malteada",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿De qué sabor la malteada? Fresa, chocolate, vainilla u oreo.",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Oreo como topping o producto? Tenemos Fresas con crema de Oreo, Mix Oreo o Mix Oreo Milo. Cual prefieres?",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "no mas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "soy Camila",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, Camila. Para el domicilio me faltan: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "cra 39A #41-99",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 9,
+          "message": "barrio Cabecera del Llano",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, barrio Cabecera del Llano. Para el domicilio me faltan: Nombre: Direccion: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 10,
+          "message": "referencia porteria azul",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 11,
+          "message": "pago neqi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, pago con Nequi. ¿Me das los demás datos para el domicilio? Nombre, dirección, barrio y referencia.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-002",
+      "name": "pedido largo de cinco productos con cantidades mixtas",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-002:65dd9ddd-f6f5-4c1c-8ff0-d175eaea5f2f",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"Resumen\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\"",
+        "forbidden text found: \"etc.\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero hacer un pedido grande",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, ¿qué productos quieres para tu pedido grande? Por ejemplo: fresas con crema tradicional, wafle tradicional, etc.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "dos fresas con crema tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, 2 fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "agregales oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "agregales oreo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "un brownie con helado",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, brownie con helado. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "una pavlova",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, pavlova. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "dos obleas de nutella",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, 2 obleas de nutella. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "una malteada de vainilla",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, malteada de vainilla. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "listo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "listo",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "me llamo Andres",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, nombre registrado.",
+          "sourceField": "text"
+        },
+        {
+          "index": 9,
+          "message": "direccion calle 84 #52-20",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "¡Dirección registrada! ¿Me compartes nombre, barrio, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 10,
+          "message": "barrio Alto Prado",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Recibido barrio Alto Prado. ¿Me das los demás datos para el domicilio? Nombre, Dirección, Referencia y Método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 11,
+          "message": "referencia edificio gris apto 302",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Referencia recibida: edificio gris apto 302. ¿Me das los datos que faltan? Nombre, dirección, barrio y método de pago.",
+          "sourceField": "text"
+        },
+        {
+          "index": 12,
+          "message": "efectivo",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, registrado pago en efectivo. Para el domicilio me faltan: Nombre: Direccion: Barrio: Referencia:",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-003",
+      "name": "wafle con fruta helado salsa y otro producto",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-003:953a0786-f3b8-420a-a12c-83958a267c6b",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero un wafle tradicional",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Listo, para el wafle tradicional escoge una fruta: fresa, banano o durazno.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "con fresa",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Que sabor de helado quieres: vainilla, chocolate, fresa u oreo?",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "helado de vainilla",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿Qué producto quieres con helado de vainilla? Tenemos fresas con crema, wafles, malteadas u otros.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "salsa de arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "salsa de arequipe",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "tambien una malteada oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "tambien una malteada oreo",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "ya",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "Listo. Me cuentas que se te antoja.",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "Laura",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre: (ya tengo Laura)\n\nDireccion:\n\nBarrio:\n\nReferencia:\n\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "cra 50 #80-10",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Dirección guardada. ¿Me das tu nombre, barrio, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "Villa Country",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, barrio Villa Country anotado. ¿Me das el resto de tus datos para el domicilio? Nombre, dirección, referencia y método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 9,
+          "message": "torre 1 apto 604",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, guardé la referencia. ¿Me das tu nombre, dirección, barrio y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 10,
+          "message": "Bancolombia",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Bancolombia",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-004",
+      "name": "fresas con topping y adicion en mensajes separados",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-004:60badea1-2e1f-4e27-a44b-b5b677527d34",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"Oreo\"",
+        "missing text somewhere: \"Resumen\"",
+        "missing text somewhere: \"Total\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "unas fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "con oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "No hay un producto activo todavia. Que te gustaria pedir? Fresas con crema tradicional, wafle tradicional u otra opcion del catalogo?",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "ponle helado de vainilla",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, le agrego helado de vainilla. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "nada mas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "Maria Jose",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Maria Jose",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "direccion cra 43 #70-12",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Recibí tu dirección: cra 43 #70-12. ¿Me puedes dar tu nombre, barrio, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "barrio Boston",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Barrio Boston registrado. ¿Cuál es tu nombre, dirección, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "referencia casa blanca",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Referencia guardada: casa blanca. ¿Nombre, dirección, barrio o método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "Nequi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, registrado Nequi como método de pago. ¿Me compartes nombre, dirección, barrio y referencia para el domicilio?",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-005",
+      "name": "combinados y vaso helado con typos",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-005:e7c57e6c-2609-43fd-b838-83a7ce00c239",
+      "passed": false,
+      "failures": [
+        "final route expected datos, got general",
+        "missing text somewhere: \"Resumen\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "buenas quiero un combiando fresa durazno con crema",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, combinado fresa durazno con crema. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "y un vaso elado de dos sabores",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, vaso helado de dos sabores. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "fresa y chocolate",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con chocolate. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "solo eso",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "Santiago Perez",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "cll 72 #46-18",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Dirección registrada. Para completar el domicilio necesito: nombre, barrio, referencia y método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "barrio El Prado",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, barrio El Prado registrado. Para el domicilio me faltan: Nombre, Direccion, Referencia y Metodo de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "referencia al lado de la tienda",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Referencia recibida: al lado de la tienda. ¿Me puedes dar tu nombre, dirección, barrio y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "bre-b",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "No entendí el mensaje. Si quieres, salúdame o cuéntame qué se te antoja.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-006",
+      "name": "pedido para recoger no debe pedir direccion completa",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-006:4a36338b-97dd-45b4-9d3b-2ee29e537aa6",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero una malteada de chocolate y una oblea arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, malteada de chocolate y oblea arequipe. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "para recoger",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, para recoger. ¿Me compartes tu nombre y método de pago (Nequi, Bancolombia, Bre-B o efectivo)?",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "soy Natalia",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, Natalia. Para el domicilio me compartes estos datos, por favor:",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "pago en efectivo",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-007",
+      "name": "fresas genericas deben pedir variante concreta",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-007:77c99994-37a0-4a36-89d0-8aae34f9a9d1",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "hola",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "Hola! Bienvenido a I Love Fresas Barranquilla. Que se te antoja hoy?",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "quiero unas fresas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿Quieres fresas con crema tradicional, fresas con helado o alguna de las combinadas como fresa durazno?",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "tradicional",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "no",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-008",
+      "name": "pedido largo con cambio de cantidad",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-008:00333c7d-0184-4de9-a3dc-32ee4fd59e5f",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"2\"",
+        "missing text somewhere: \"Resumen\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero una oblea de arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, oblea de arequipe. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "mejor dos",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "Listo. Me cuentas que se te antoja.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "y una malteada oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, malteada oreo. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "no mas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "Carlos Mendoza",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre: Carlos Mendoza\n\nDireccion:\n\nBarrio:\n\nReferencia:\n\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "direccion cra 53 #76-22",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "barrio El Golf",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Recibido barrio El Golf. ¿Me das los demás datos para el domicilio? (Nombre, Dirección, Referencia, Método de pago)",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "referencia lobby principal",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Referencia guardada: lobby principal. ¿Me puedes dar los datos que faltan? Nombre, dirección, barrio y método de pago.",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "nequi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-009",
+      "name": "falta referencia",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-009:6858de82-1369-4547-84e0-1d679d1723de",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero unas fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "no",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "soy Valentina",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, Valentina. Para el domicilio me faltan: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "direccion cra 44 #82-11",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "barrio Riomar",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Recibí el barrio Riomar. ¿Me puedes dar nombre, dirección, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "Nequi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, registrado Nequi como método de pago. ¿Me compartes los datos que faltan para el domicilio?",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-010",
+      "name": "falta metodo de pago",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-010:e9336261-d6ae-4520-80ae-741cd3796d8e",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero una pavlova",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, pavlova. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "eso es todo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "Daniela",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre: Daniela\n\nDireccion:\n\nBarrio:\n\nReferencia:\n\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "calle 79 #50-35",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, dirección: calle 79 #50-35. ¿Me puedes dar tu nombre, barrio, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "barrio Alto Prado",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Recibido barrio Alto Prado. ¿Me das los demás datos para el domicilio? Nombre, dirección, referencia y método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "referencia porteria",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, referencia: portería. ¿Me das los demás datos para el domicilio? Nombre, dirección, barrio y método de pago.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-011",
+      "name": "barrio solo no cuenta como direccion",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-011:9dbc49af-04df-493e-97ab-f91c71ebc790",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "una malteada de vainilla",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, malteada de vainilla. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "no",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "Jorge",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre: Jorge\n\nDireccion:\n\nBarrio:\n\nReferencia:\n\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "barrio Boston",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "referencia casa amarilla",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "referencia casa amarilla",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "efectivo",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, registrado pago en efectivo. ¿Me compartes los demás datos para el domicilio? Nombre, Dirección, Barrio, Referencia.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-012",
+      "name": "direccion sin barrio",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-012:2f006e70-9575-4109-87a2-4c8aae72fe18",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "unas fresas con helado",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con helado. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "vainilla",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "vainilla",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "no mas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Entiendo que no quieres agregar más productos. ¿Qué te gustaría pedir entonces? Dime un producto del catálogo.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "soy Lucia",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, Lucia. Para el domicilio me faltan: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "cra 45 #80-22",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, dirección registrada: cra 45 #80-22. Ahora, para completar tus datos de domicilio, por favor comparte: Nombre, Barrio, Referencia y Método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "referencia edificio blanco",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Referencia guardada. ¿Qué más necesitas?",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "Bancolombia",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Bancolombia",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-013",
+      "name": "wafle incompleto no debe avanzar a datos",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-013:2273f411-c6c7-4fc1-a44e-b92f0fee4cb3",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero un wafle",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Listo, para el wafle tradicional escoge una fruta: fresa, banano o durazno.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "fresa",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Quieres fresas con crema tradicional?",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "vainilla",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Que salsa quieres: arequipe, chocolate, mora o nutella?",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-014",
+      "name": "confirmacion temprana no confirma pedido incompleto",
+      "category": "faltantes",
+      "sessionId": "preprod:pp-014:70727bc3-988c-44fc-a6dc-949ab9255679",
+      "passed": false,
+      "failures": [
+        "final route expected pedido, got general",
+        "missing text somewhere: \"Nombre\"",
+        "missing text somewhere: \"Direccion\"",
+        "missing text somewhere: \"Dirección\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero unas fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "si",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "Listo. Me cuentas que se te antoja.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-015",
+      "name": "agregar topping despues de pregunta de otro producto",
+      "category": "modificacion",
+      "sessionId": "preprod:pp-015:051208f3-5fa6-436d-b85e-99c79eba362b",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"Resumen\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "con milo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿Qué producto quieres con Milo? Por ejemplo, fresas con crema o un wafle.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "no",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "Ana",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Ana",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "cra 46 #85-10",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, dirección registrada: cra 46 #85-10. Para el domicilio me faltan: Nombre, Barrio, Referencia, Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "Riomar",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "apto 201",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Ese dato corresponde a nombre, direccion, barrio, referencia o metodo de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "Nequi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-016",
+      "name": "cambiar cantidad a dos",
+      "category": "modificacion",
+      "sessionId": "preprod:pp-016:8245adfe-d4a4-4580-8949-629899858dd8",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\"",
+        "forbidden text found: \"etc.\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "una oblea arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, oblea arequipe. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "mejor dos",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "mejor dos",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "no mas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "Pedro",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Hola, ¿qué producto te gustaría pedir? Tenemos fresas con crema, obleas, malteadas, etc.",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "cll 76 #52-34",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, dirección registrada: cll 76 #52-34. Para completar el domicilio necesito: Nombre, Barrio, Referencia y Método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "El Golf",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "casa 2",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "¿Ese \"casa 2\" es tu referencia (casa, edificio, etc.)? Por favor confírmame o dame los datos completos.",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "efectivo",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, registrado pago en efectivo. Para el domicilio me compartes estos datos, por favor: Nombre: Direccion: Barrio: Referencia:",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-017",
+      "name": "cambiar direccion antes del resumen",
+      "category": "modificacion",
+      "sessionId": "preprod:pp-017:4b2331df-3af9-450c-8be6-42cdd1c27134",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"Resumen\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "malteada oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, malteada de Oreo. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "no",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "soy Paula",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto Paula. Para el domicilio me faltan: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "direccion cra 40 #70-10",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, dirección cra 40 #70-10. ¿Nombre, barrio, referencia y método de pago?",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "mejor direccion cra 40 #70-20",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Dirección actualizada a cra 40 #70-20. ¿Qué más necesitas?",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "barrio Prado",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "referencia porteria negra",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "¿Algo más para la referencia o seguimos con los demás datos?",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "Nequi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, registrado Nequi como método de pago. Para el domicilio me compartes estos datos, por favor: Nombre: Direccion: Barrio: Referencia:",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-018",
+      "name": "cambiar metodo de pago",
+      "category": "modificacion",
+      "sessionId": "preprod:pp-018:528f4b95-ae8e-4375-bff6-04cf140ab2e5",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\"",
+        "forbidden text found: \"etc.\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero una pavlova",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, pavlova. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "listo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿Que producto te gustaria pedir? Tenemos fresas con crema tradicional, fresas con helado, wafle tradicional, etc.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "Roberto",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Roberto",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "cra 51 #79-25",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, guardé la dirección cra 51 #79-25. Para el domicilio me faltan: Nombre, Barrio, Referencia y Método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "Alto Prado",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, barrio Alto Prado. Para completar el domicilio necesito nombre, dirección, referencia y método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "recepcion",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Ese dato \"recepcion\" no lo reconozco como nombre, direccion, barrio, referencia o metodo de pago. ¿A cuál de esos campos corresponde?",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "Nequi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "mejor efectivo",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto, efectivo. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-019",
+      "name": "anade otro producto despues de solo eso",
+      "category": "modificacion",
+      "sessionId": "preprod:pp-019:783ebf16-1d90-4942-b76a-6daababe5c74",
+      "passed": false,
+      "failures": [
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "solo eso",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "espera tambien una oblea",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Que oblea quieres? Arequipe, Arequipe crema, Nutella o Arequipe queso?",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿Qué producto quieres con arequipe? Tenemos obleas, malteadas o antojitos.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-020",
+      "name": "producto inexistente chocomix",
+      "category": "anti_invencion",
+      "sessionId": "preprod:pp-020:41f58f49-bc9a-4db8-ba76-53743d03d073",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"no aparece en el menu\"",
+        "missing text somewhere: \"no está en el menú\"",
+        "missing text somewhere: \"no lo manejamos\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero unas fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "y un chocomix",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, chocomix. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-021",
+      "name": "producto externo pizza",
+      "category": "anti_invencion",
+      "sessionId": "preprod:pp-021:2451adae-92fe-4557-a0e5-448caeda98e5",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"no aparece en el menu\"",
+        "missing text somewhere: \"no está en el menú\"",
+        "missing text somewhere: \"no lo manejamos\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero una pizza hawaiana",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Lo siento, no tenemos pizza hawaiana en el menú. ¿Quieres ver opciones de fresas con crema, obleas, malteadas o wafles?",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-022",
+      "name": "topping inexistente",
+      "category": "anti_invencion",
+      "sessionId": "preprod:pp-022:c88d7110-f716-401d-89a0-a76ec9e72c09",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"no aparece\"",
+        "missing text somewhere: \"no lo manejamos\"",
+        "missing text somewhere: \"opciones disponibles\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "ponle gomitas acidas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Primero elige un producto para agregarle gomitas.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-023",
+      "name": "sabor no autorizado",
+      "category": "anti_invencion",
+      "sessionId": "preprod:pp-023:b0ca889c-cc4c-4195-8109-79b563bc7033",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero una malteada de pistacho",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Lo siento, no tenemos malteada de pistacho. Las opciones son fresa, chocolate, vainilla u oreo.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-024",
+      "name": "producto mal escrito no inequivoco",
+      "category": "anti_invencion",
+      "sessionId": "preprod:pp-024:6aaa799f-ebb1-4f24-9414-6e734da28bfe",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"no aparece\"",
+        "missing text somewhere: \"menu\"",
+        "missing text somewhere: \"menú\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero un fresiloco mega",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "No tenemos fresiloco mega disponible. Quieres alguna de estas fresas: Fresas con crema tradicional o Fresas con helado?",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-025",
+      "name": "reclamo escala",
+      "category": "escalamiento",
+      "sessionId": "preprod:pp-025:9718ef0a-582b-4167-b0c6-b9f7024016be",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero poner un reclamo por un pedido",
+          "route": "escalamiento",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "Direct Reply 4"
+          ],
+          "responseText": "En un momento te atiende una persona del equipo.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-026",
+      "name": "reembolso escala",
+      "category": "escalamiento",
+      "sessionId": "preprod:pp-026:562b2f3c-c9bb-4c60-b9cc-2efaec5e0959",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero que me devuelvan la plata",
+          "route": "escalamiento",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "Direct Reply 4"
+          ],
+          "responseText": "En un momento te atiende una persona del equipo.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-027",
+      "name": "descuento escala",
+      "category": "escalamiento",
+      "sessionId": "preprod:pp-027:7a5896bc-456a-48ca-a916-259b443c4811",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "me haces descuento si compro varias?",
+          "route": "escalamiento",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "Direct Reply 4"
+          ],
+          "responseText": "En un momento te atiende una persona del equipo.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-028",
+      "name": "tiempo exacto escala",
+      "category": "escalamiento",
+      "sessionId": "preprod:pp-028:b98c1264-c7d0-4be8-ac06-7d6d06f1fda6",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "me llega en 15 minutos exactos?",
+          "route": "escalamiento",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "Direct Reply 4"
+          ],
+          "responseText": "En un momento te atiende una persona del equipo.",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-029",
+      "name": "menu completo activa envio menu",
+      "category": "menu",
+      "sessionId": "preprod:pp-029:3f9d9ec2-1cd7-43ef-9410-da956819c4aa",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "me mandas el menu completo pdf",
+          "route": "menu",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE MENÚ",
+            "CONDITION ENVIAR MENÚ",
+            "HTTP SEND MENU PDF",
+            "Direct Reply 5"
+          ],
+          "responseText": "Aquí está el menú!",
+          "sourceField": "text"
+        }
+      ]
+    },
+    {
+      "id": "pp-030",
+      "name": "toppings no deben mandar pdf ni inventar costo extra",
+      "category": "menu",
+      "sessionId": "preprod:pp-030:2db0a9a0-dee2-4b66-a00c-9d340ca1a188",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "que toppings tienen para las fresas?",
+          "route": "menu",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE MENÚ",
+            "CONDITION ENVIAR MENÚ",
+            "Direct Reply 6"
+          ],
+          "responseText": "Tenemos estos toppings para tus fresas: leche condensada, arequipe, Oreo, merengue, brownie, salsa Hershey, chips de chocolate negro, chips de chocolate blancos, chips de chocolate colores, Krispi, Milo, coco, Choco Crispi, Mym y Chokis.",
+          "sourceField": "text"
+        }
+      ]
+    }
+  ]
+}

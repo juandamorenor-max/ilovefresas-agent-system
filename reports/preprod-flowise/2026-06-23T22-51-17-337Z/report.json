@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-06-23T22:51:26.603Z",
+  "flowiseHost": "https://cloud.flowiseai.com",
+  "flowiseFlowId": "e52f27b3-06e2-4fb0-b853-30e936b99839",
+  "strict": false,
+  "totals": {
+    "cases": 1,
+    "passed": 1,
+    "failed": 0,
+    "turns": 2
+  },
+  "results": [
+    {
+      "id": "pp-020",
+      "name": "producto inexistente chocomix",
+      "category": "anti_invencion",
+      "sessionId": "preprod:pp-020:e93c64e4-d98b-411e-a8a9-6dcb65a40872",
+      "passed": true,
+      "failures": [],
+      "turns": [
+        {
+          "index": 0,
+          "message": "quiero unas fresas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Quieres agregar otro producto al pedido?",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "y un chocomix",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Ese producto no aparece en el menu por ahora. Te puedo ayudar con las opciones disponibles.",
+          "sourceField": "text"
+        }
+      ]
+    }
+  ]
+}

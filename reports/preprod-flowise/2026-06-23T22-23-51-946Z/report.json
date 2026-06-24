@@ -1,0 +1,202 @@
+{
+  "generatedAt": "2026-06-23T22:25:01.440Z",
+  "flowiseHost": "https://cloud.flowiseai.com",
+  "flowiseFlowId": "e52f27b3-06e2-4fb0-b853-30e936b99839",
+  "strict": false,
+  "totals": {
+    "cases": 1,
+    "passed": 0,
+    "failed": 1,
+    "turns": 12
+  },
+  "results": [
+    {
+      "id": "pp-001",
+      "name": "fresas tradicionales, oblea y malteada con datos en partes",
+      "category": "pedido_valido",
+      "sessionId": "preprod:pp-001:a3feafca-9288-4126-a413-322f74e3ec83",
+      "passed": false,
+      "failures": [
+        "missing text somewhere: \"Resumen\"",
+        "missing text somewhere: \"Total\"",
+        "forbidden text found: \"si ya esta asi, dime no\"",
+        "forbidden text found: \"si ya está así, dime no\""
+      ],
+      "turns": [
+        {
+          "index": 0,
+          "message": "holaa",
+          "route": "general",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE GENERAL",
+            "Direct Reply 2"
+          ],
+          "responseText": "Hola! Bienvenido a I Love Fresas Barranquilla. Que se te antoja hoy?",
+          "sourceField": "text"
+        },
+        {
+          "index": 1,
+          "message": "quiero unas frezas tradicionales",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, fresas con crema tradicional. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 2,
+          "message": "tambien una oblea",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Claro, ¿cuál oblea quieres? Arequipe, Arequipe crema, Arequipe dulce de mora, Arequipe queso o Nutella.",
+          "sourceField": "text"
+        },
+        {
+          "index": 3,
+          "message": "arequipe",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto, oblea de arequipe. Te gustaria anadir algun otro producto? Si ya esta asi, dime no y seguimos con tus datos de domicilio.",
+          "sourceField": "text"
+        },
+        {
+          "index": 4,
+          "message": "y una malteada",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿De qué sabor la malteada? Fresa, chocolate, vainilla u oreo.",
+          "sourceField": "text"
+        },
+        {
+          "index": 5,
+          "message": "oreo",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "¿Quieres agregar Oreo a qué producto? Dime el producto primero.",
+          "sourceField": "text"
+        },
+        {
+          "index": 6,
+          "message": "no mas",
+          "route": "pedido",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE PEDIDO",
+            "Direct Reply 0"
+          ],
+          "responseText": "Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\nDireccion:\nBarrio:\nReferencia:\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 7,
+          "message": "soy Camila",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto Camila. Para el domicilio me compartes: Dirección, Barrio, Referencia y Método de pago (Nequi, Bancolombia, Bre-B o efectivo).",
+          "sourceField": "text"
+        },
+        {
+          "index": 8,
+          "message": "cra 39A #41-99",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Perfecto. Para el domicilio me faltan: Nombre: Direccion: Barrio: Referencia: Metodo de pago: Nequi, Bancolombia, Bre-B o efectivo",
+          "sourceField": "text"
+        },
+        {
+          "index": 9,
+          "message": "barrio Cabecera del Llano",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Barrio registrado: Cabecera del Llano. ¿Me das los demás datos?",
+          "sourceField": "text"
+        },
+        {
+          "index": 10,
+          "message": "referencia porteria azul",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Referencia guardada: portería azul. ¿Me das los datos que faltan para el domicilio? Nombre, dirección, barrio y método de pago.",
+          "sourceField": "text"
+        },
+        {
+          "index": 11,
+          "message": "pago neqi",
+          "route": "datos",
+          "nodeLabels": [
+            "Start",
+            "ROUTER CENTRAL",
+            "Condition 0",
+            "AGENTE DATOS",
+            "CONDITION PEDIDO CONFIRMADO",
+            "Direct Reply 1"
+          ],
+          "responseText": "Entendido, pago con Nequi. ¿Me compartes nombre, dirección, barrio y referencia?",
+          "sourceField": "text"
+        }
+      ]
+    }
+  ]
+}
