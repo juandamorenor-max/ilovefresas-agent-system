@@ -58,6 +58,14 @@ export function runMockMultiTurnConversation(
       continue;
     }
 
+    if (state.status === "awaiting_payment_proof") {
+      const turn = handlePaymentProofTurn(customerMessage, state);
+      state = turn.decision.state;
+      decision = turn.decision;
+      turns.push(turn);
+      continue;
+    }
+
     const routeResult = mockRouteMessage(customerMessage, context);
     const turn = handleTurn(customerMessage, routeResult.route, state, context);
 
@@ -89,6 +97,31 @@ function handleCustomerConfirmation(
     customerMessage,
     route: "general",
     customerReply: replyFromDecision(decision),
+    state: decision.state,
+    decision
+  };
+}
+
+function handlePaymentProofTurn(
+  customerMessage: string,
+  state: CanonicalOrderState
+): MultiTurnConversationTurn {
+  const paymentProofReceived = isPaymentProof(customerMessage);
+  const decision = applyFlowiseTurn(state, {
+    route: "general",
+    confidence: 0.95,
+    reason: paymentProofReceived
+      ? "customer sent payment proof"
+      : "customer has not sent payment proof",
+    comprobante_pago_recibido: paymentProofReceived
+  });
+
+  return {
+    customerMessage,
+    route: "general",
+    customerReply: paymentProofReceived
+      ? replyFromDecision(decision)
+      : "Para dejar tu pedido en revision, enviame el comprobante del pago por aqui.",
     state: decision.state,
     decision
   };
@@ -219,6 +252,13 @@ function replyFromDecision(decision: BackendOrderDecision): string {
     return "Listo, dejo tu pedido en revision con el equipo. Te confirmamos por aqui antes de prepararlo.";
   }
 
+  if (decision.nextAction === "ask_payment_proof") {
+    return (
+      decision.paymentInstructionsText ??
+      "Para continuar con la revision del pedido, enviame el comprobante del pago por aqui."
+    );
+  }
+
   if (decision.nextAction === "escalate_to_human") {
     return "Te paso con una persona del equipo para revisar eso bien.";
   }
@@ -240,6 +280,24 @@ function isCustomerConfirmation(message: string): boolean {
   return ["si", "correcto", "listo", "asi esta bien", "confirmo"].some(
     (phrase) => normalized === phrase || normalized.includes(phrase)
   );
+}
+
+function isPaymentProof(message: string): boolean {
+  const normalized = message
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .trim();
+
+  return [
+    "comprobante",
+    "soporte",
+    "transferencia hecha",
+    "ya pague",
+    "ya lo pague",
+    "te envio el pago",
+    "adjunto"
+  ].some((phrase) => normalized.includes(phrase));
 }
 
 function questionForMissingField(field?: string): string {

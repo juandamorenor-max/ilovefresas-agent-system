@@ -1,6 +1,11 @@
 import type { AgentRoute, DatosPedido, PedidoItem } from "./types.js";
 import { isKnownProductName } from "./availabilityCatalog.js";
-import { buildCustomerConfirmationSummary, buildOrderReviewSummary } from "./orderLifecycle.js";
+import {
+  buildCustomerConfirmationSummary,
+  buildOrderReviewSummary,
+  buildPaymentInstructions,
+  paymentRequiresProof
+} from "./orderLifecycle.js";
 
 export type ConversationChannel = "telegram" | "whatsapp";
 
@@ -9,6 +14,7 @@ export type CanonicalOrderStatus =
   | "collecting_order"
   | "collecting_data"
   | "ready_for_customer_confirmation"
+  | "awaiting_payment_proof"
   | "ready_for_review"
   | "sent_for_review"
   | "closing_prompt_sent"
@@ -20,6 +26,7 @@ export type BackendNextAction =
   | "ask_for_order"
   | "ask_for_data"
   | "ask_customer_confirmation"
+  | "ask_payment_proof"
   | "send_to_review"
   | "escalate_to_human"
   | "reply";
@@ -35,6 +42,7 @@ export interface CanonicalOrderState {
   humanReviewReasons: string[];
   lastRoute?: AgentRoute;
   customerConfirmed?: boolean;
+  paymentProofReceived?: boolean;
 }
 
 export interface FlowiseTurnProposal {
@@ -45,6 +53,7 @@ export interface FlowiseTurnProposal {
   datos?: DatosPedido;
   observaciones?: string[];
   pedido_confirmado?: boolean;
+  comprobante_pago_recibido?: boolean;
   needs_human?: boolean;
 }
 
@@ -55,6 +64,7 @@ export interface BackendOrderDecision {
   readyForReview: boolean;
   summaryText?: string;
   customerSummaryText?: string;
+  paymentInstructionsText?: string;
 }
 
 export interface SanitizeItemsResult {
@@ -97,7 +107,8 @@ export function applyFlowiseTurn(
       current.humanReviewReasons,
       rejectedItemReasons(sanitizedItems.rejectedItems)
     ),
-    customerConfirmed: nextCustomerConfirmed(current, proposal)
+    customerConfirmed: nextCustomerConfirmed(current, proposal),
+    paymentProofReceived: nextPaymentProofReceived(current, proposal)
   };
 
   if (sanitizedItems.rejectedItems.length > 0 || shouldEscalate(proposal)) {
@@ -177,6 +188,24 @@ export function evaluateCanonicalOrder(state: CanonicalOrderState): BackendOrder
     }
 
     if (state.customerConfirmed) {
+      if (paymentRequiresProof(state.datos.metodo_pago) && !state.paymentProofReceived) {
+        const paymentInstructions = buildPaymentInstructions(
+          state.datos.metodo_pago,
+          customerSummary.pricing.total
+        );
+        const paymentState = { ...state, status: "awaiting_payment_proof" as const };
+
+        return {
+          state: paymentState,
+          nextAction: "ask_payment_proof",
+          missingFields: [],
+          readyForReview: false,
+          summaryText: summary.summaryText,
+          customerSummaryText: customerSummary.messageText,
+          paymentInstructionsText: paymentInstructions.messageText
+        };
+      }
+
       const readyState = { ...state, status: "ready_for_review" as const };
       return {
         state: readyState,
@@ -232,6 +261,21 @@ function nextCustomerConfirmed(
   }
 
   return current.customerConfirmed ?? false;
+}
+
+function nextPaymentProofReceived(
+  current: CanonicalOrderState,
+  proposal: FlowiseTurnProposal
+): boolean {
+  if (proposal.comprobante_pago_recibido === true) {
+    return true;
+  }
+
+  if ((proposal.items?.length ?? 0) > 0 || Object.keys(proposal.datos ?? {}).length > 0) {
+    return false;
+  }
+
+  return current.paymentProofReceived ?? false;
 }
 
 function shouldEscalate(proposal: FlowiseTurnProposal): boolean {

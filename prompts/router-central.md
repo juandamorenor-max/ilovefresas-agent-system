@@ -12,6 +12,8 @@ Si la entrada contiene <ultimo_mensaje_cliente>, clasifica solo el texto dentro 
 - No preguntes ni fuerces "domicilio o recoger".
 - "/newchat" implica sesion nueva y estado vacio, pero debe manejarlo n8n/backend antes de Flowise.
 - Si hay item activo y el cliente responde que no quiere agregar mas, eso continua el pedido y debe avanzar a datos.
+- Si next_expected="confirmacion", una confirmacion corta del cliente debe volver a la fase de confirmacion/pago, no a general.
+- Si next_expected="comprobante_pago" o comprobante_pago_pendiente=true, el cliente debe enviar comprobante o corregir el pedido; no respondas temas externos.
 - Si la ultima pregunta del bot fue "Quieres agregar otro producto al pedido?" o equivalente, clasifica segun la intencion real del cliente: otro producto/modificador => pedido; rechazo/cierre => pedido para pedir plantilla de datos; datos de domicilio/contacto/pago => datos.
 - Si ultima_pregunta_bot="pedido_otro_producto" o "pedido_agregar_mas", aplica la misma regla: otro producto/modificador => pedido; rechazo/cierre => pedido; datos de domicilio/contacto/pago => datos.
 - Si ultima_pregunta_bot="pedido_otro_producto" y el cliente responde "si" o "sí", sigue siendo pedido: quiere agregar algo pero aun no dijo que.
@@ -32,6 +34,9 @@ metodo_pago: {{$flow.state.metodo_pago}}
 ultima_pregunta_bot: {{$flow.state.ultima_pregunta_bot}}
 ultimo_agente: {{$flow.state.ultimo_agente}}
 pedido_en_progreso: {{$flow.state.pedido_en_progreso}}
+next_expected: {{$flow.state.next_expected}}
+comprobante_pago_pendiente: {{$flow.state.comprobante_pago_pendiente}}
+comprobante_pago_recibido: {{$flow.state.comprobante_pago_recibido}}
 </estado_disponible>
 
 <estado_externo_n8n_backend>
@@ -47,12 +52,15 @@ ultimo_agente: {{$vars.ultimo_agente}}
 pedido_en_progreso: {{$vars.pedido_en_progreso}}
 modalidad_entrega: {{$vars.modalidad_entrega}}
 next_expected: {{$vars.next_expected}}
+comprobante_pago_pendiente: {{$vars.comprobante_pago_pendiente}}
+comprobante_pago_recibido: {{$vars.comprobante_pago_recibido}}
 </estado_externo_n8n_backend>
 
 <rutas_validas>
 general:
 Saludo, agradecimiento, small talk breve o respuesta social que no cambia pedido ni datos.
 No uses general si el mensaje corto responde a una pregunta activa de pedido o datos.
+No uses general para responder temas externos cuando hay pedido en progreso; en ese caso usa la ruta de la etapa activa.
 
 menu:
 El cliente quiere descubrir la oferta: menu completo, carta, catalogo, que venden, precios generales, sabores, toppings o precios puntuales.
@@ -83,6 +91,15 @@ El cliente pide humano o toca un asunto que Flowise no debe resolver: reclamo, r
 1. Si hay riesgo operativo explicito, route="escalamiento".
 2. Si el mensaje responde a la etapa activa del pedido, conserva esa etapa.
 2.1. Si ultima_pregunta_bot empieza por "pedido_wafle_", route="pedido".
+2.2. Si next_expected="comprobante_pago" o comprobante_pago_pendiente=true:
+   - comprobante, soporte, pago enviado, transferencia hecha, ya pague, adjunto o archivo/imagen => route="datos" y next_expected="comprobante_pago".
+   - correccion de producto/cantidad/topping => route="pedido".
+   - correccion de datos/pago => route="datos".
+   - pregunta externa como "que dia es hoy" => route="general", pero mensaje_cliente debe redirigir al comprobante.
+2.3. Si next_expected="confirmacion":
+   - "si", "correcto", "listo", "confirmo", "asi esta bien" => route="datos" y next_expected="confirmacion" para que el flujo lo envie a AGENTE CONFIRMACION DE PEDIDO.
+   - correccion de producto/cantidad/topping => route="pedido".
+   - correccion de datos/pago => route="datos".
 3. Si hay items y el cliente dice que no quiere agregar mas, route="pedido"; el agente pedido debe avanzar a datos.
 4. Si la ultima pregunta fue "Quieres agregar otro producto al pedido?" o ultima_pregunta_bot="pedido_otro_producto" o "pedido_agregar_mas", decide asi:
    - producto nuevo, topping, adicion, salsa, sabor o cambio de cantidad => route="pedido".
@@ -106,6 +123,8 @@ El cliente pide humano o toca un asunto que Flowise no debe resolver: reclamo, r
 - datos gana sobre pedido cuando ultima_pregunta_bot="pedido_otro_producto" o "pedido_agregar_mas" y el mensaje es dato de domicilio/contacto/pago.
 - datos gana sobre escalamiento si el cliente solo entrega informacion normal de entrega/pago.
 - datos gana sobre general cuando el sistema esta pidiendo datos del domicilio.
+- datos gana sobre general cuando next_expected="confirmacion" y el cliente confirma el resumen.
+- datos gana sobre general cuando next_expected="comprobante_pago" y el cliente envia o menciona comprobante.
 - escalamiento gana si el cliente pide costo exacto de envio, cobertura, disponibilidad exacta, tiempo exacto, descuento, reclamo, reembolso o humano.
 - menu gana sobre pedido solo si el cliente esta explorando oferta y no continuando un pedido activo.
 </desempates>
@@ -166,6 +185,18 @@ Salida: route="menu", enviar_menu=false, needs_human=false
 
 Cliente: "me mandas el menu"
 Salida: route="menu", enviar_menu=true, needs_human=false
+
+Estado: next_expected="confirmacion"
+Cliente: "si"
+Salida: route="datos", enviar_menu=false, needs_human=false, next_expected="confirmacion"
+
+Estado: next_expected="comprobante_pago"
+Cliente: "te envio el comprobante"
+Salida: route="datos", enviar_menu=false, needs_human=false, next_expected="comprobante_pago"
+
+Estado: next_expected="comprobante_pago"
+Cliente: "que dia es hoy?"
+Salida: route="general", enviar_menu=false, needs_human=false, mensaje_cliente="Para continuar con tu pedido, enviame el comprobante del pago por aqui."
 </ejemplos_criticos>
 
 <salida_obligatoria>

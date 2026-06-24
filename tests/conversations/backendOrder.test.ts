@@ -71,7 +71,7 @@ describe("backend canonical order contract", () => {
     expect(decision.customerSummaryText).toContain("Total: 21000");
   });
 
-  it("sends to review only after explicit customer confirmation", () => {
+  it("asks for payment proof after explicit customer confirmation with Nequi", () => {
     const state = createEmptyOrderState({
       conversationId: "case-003b",
       channel: "whatsapp",
@@ -99,10 +99,86 @@ describe("backend canonical order contract", () => {
       pedido_confirmado: true
     });
 
+    expect(review.state.status).toBe("awaiting_payment_proof");
+    expect(review.nextAction).toBe("ask_payment_proof");
+    expect(review.readyForReview).toBe(false);
+    expect(review.paymentInstructionsText).toContain("Nequi: 3000000000");
+    expect(review.paymentInstructionsText).toContain("Total: 21000");
+    expect(review.customerSummaryText).toContain("Total: 21000");
+  });
+
+  it("sends to review only after payment proof is received", () => {
+    const state = createEmptyOrderState({
+      conversationId: "case-003c",
+      channel: "whatsapp",
+      channelContact: "whatsapp:+573001234567"
+    });
+
+    const confirmation = applyFlowiseTurn(state, {
+      route: "datos",
+      confidence: 0.91,
+      reason: "complete structured order",
+      items: [{ producto: "Fresas con crema tradicional", cantidad: 1, precio_unitario: 16000 }],
+      datos: {
+        nombre: "Laura",
+        direccion: "Calle 80 #50-20",
+        barrio: "Alto Prado",
+        referencia: "Porteria principal",
+        metodo_pago: "nequi"
+      }
+    });
+
+    const payment = applyFlowiseTurn(confirmation.state, {
+      route: "general",
+      confidence: 0.95,
+      reason: "customer confirmed summary",
+      pedido_confirmado: true
+    });
+
+    const review = applyFlowiseTurn(payment.state, {
+      route: "general",
+      confidence: 0.95,
+      reason: "customer sent payment proof",
+      comprobante_pago_recibido: true
+    });
+
     expect(review.state.status).toBe("ready_for_review");
     expect(review.nextAction).toBe("send_to_review");
     expect(review.readyForReview).toBe(true);
     expect(review.customerSummaryText).toContain("Total: 21000");
+  });
+
+  it("does not ask for payment proof for efectivo", () => {
+    const state = createEmptyOrderState({
+      conversationId: "case-003d",
+      channel: "telegram",
+      channelContact: "telegram:123"
+    });
+
+    const confirmation = applyFlowiseTurn(state, {
+      route: "datos",
+      confidence: 0.91,
+      reason: "complete cash order",
+      items: [{ producto: "Fresas con crema tradicional", cantidad: 1, precio_unitario: 16000 }],
+      datos: {
+        nombre: "Laura",
+        direccion: "Calle 80 #50-20",
+        barrio: "Alto Prado",
+        referencia: "Porteria principal",
+        metodo_pago: "efectivo"
+      }
+    });
+
+    const review = applyFlowiseTurn(confirmation.state, {
+      route: "general",
+      confidence: 0.95,
+      reason: "customer confirmed summary",
+      pedido_confirmado: true
+    });
+
+    expect(review.state.status).toBe("ready_for_review");
+    expect(review.nextAction).toBe("send_to_review");
+    expect(review.paymentInstructionsText).toBeUndefined();
   });
 
   it("ignores Flowise pedido_confirmado when backend data is incomplete", () => {

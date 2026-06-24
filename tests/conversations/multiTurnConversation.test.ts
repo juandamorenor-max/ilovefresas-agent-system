@@ -25,7 +25,8 @@ describe("multi-turn conversation harness", () => {
         "soy Maria",
         "referencia porteria azul",
         "pago por Nequi",
-        "si"
+        "si",
+        "te envio el comprobante"
       ],
       {
         conversationId: "telegram:minimo:test",
@@ -42,15 +43,18 @@ describe("multi-turn conversation harness", () => {
       "datos",
       "datos",
       "datos",
+      "general",
       "general"
     ]);
     expect(result.turns[2].customerReply).toContain("Nombre:");
     expect(result.turns[2].customerReply).toContain("Direccion:");
     expect(result.turns[2].customerReply).not.toMatch(/domicilio o recoger|recoger o domicilio/i);
-    expect(result.turns.at(-2)?.customerReply).toContain("Resumen de tu pedido");
-    expect(result.turns.at(-2)?.customerReply).toContain("Fresas con crema tradicional");
-    expect(result.turns.at(-2)?.customerReply).toContain("Domicilio: 5000");
-    expect(result.turns.at(-2)?.customerReply).toContain("Total: 21000");
+    expect(result.turns.at(-3)?.customerReply).toContain("Resumen de tu pedido");
+    expect(result.turns.at(-3)?.customerReply).toContain("Fresas con crema tradicional");
+    expect(result.turns.at(-3)?.customerReply).toContain("Domicilio: 5000");
+    expect(result.turns.at(-3)?.customerReply).toContain("Total: 21000");
+    expect(result.turns.at(-2)?.customerReply).toContain("Nequi: 3000000000");
+    expect(result.turns.at(-1)?.customerReply).toContain("dejo tu pedido en revision");
     expect(result.finalDecision.nextAction).toBe("send_to_review");
     expect(result.state.status).toBe("ready_for_review");
   });
@@ -67,7 +71,8 @@ describe("multi-turn conversation harness", () => {
         "barrio Alto Prado",
         "referencia porteria principal",
         "pago por Nequi",
-        "listo"
+        "listo",
+        "adjunto comprobante"
       ],
       {
         conversationId: "telegram:123:test",
@@ -86,17 +91,20 @@ describe("multi-turn conversation harness", () => {
       "datos",
       "datos",
       "datos",
+      "general",
       "general"
     ]);
 
     expect(result.turns[0].customerReply).toContain("opciones de fresas");
     expect(result.turns[0].customerReply).not.toMatch(/\b(etc|otra|otras|entre otras)\b/i);
 
-    expect(result.turns.at(-2)?.decision.nextAction).toBe("ask_customer_confirmation");
-    expect(result.turns.at(-2)?.customerReply).toContain("Resumen de tu pedido");
-    expect(result.turns.at(-2)?.customerReply).toContain("Domicilio: 5000");
-    expect(result.turns.at(-2)?.customerReply).toContain("Total: 41000");
+    expect(result.turns.at(-3)?.decision.nextAction).toBe("ask_customer_confirmation");
+    expect(result.turns.at(-3)?.customerReply).toContain("Resumen de tu pedido");
+    expect(result.turns.at(-3)?.customerReply).toContain("Domicilio: 5000");
+    expect(result.turns.at(-3)?.customerReply).toContain("Total: 41000");
 
+    expect(result.turns.at(-2)?.decision.nextAction).toBe("ask_payment_proof");
+    expect(result.turns.at(-2)?.customerReply).toContain("Nequi: 3000000000");
     expect(result.finalDecision.readyForReview).toBe(true);
     expect(result.finalDecision.nextAction).toBe("send_to_review");
     expect(result.state.status).toBe("ready_for_review");
@@ -124,6 +132,33 @@ describe("multi-turn conversation harness", () => {
     expect(result.finalDecision.customerSummaryText).toContain("porteria principal");
     expect(result.finalDecision.customerSummaryText).toContain("nequi");
     expect(result.finalDecision.customerSummaryText).not.toMatch(/preparando|despacho/i);
+  });
+
+  it("keeps waiting for payment proof after summary confirmation", () => {
+    const result = runMockMultiTurnConversation(
+      [
+        "quiero unas fresas tradicionales",
+        "no",
+        "cabecera del llano, cra 39A # 41-99",
+        "soy Maria",
+        "referencia porteria azul",
+        "pago por Bancolombia",
+        "si",
+        "que dia es hoy?"
+      ],
+      {
+        conversationId: "telegram:payment:test",
+        channel: "telegram",
+        channelContact: "telegram:531515729"
+      }
+    );
+
+    expect(result.turns.at(-2)?.decision.nextAction).toBe("ask_payment_proof");
+    expect(result.turns.at(-2)?.customerReply).toContain("Cuenta Bancolombia: 72600000000");
+    expect(result.finalDecision.nextAction).toBe("ask_payment_proof");
+    expect(result.state.status).toBe("awaiting_payment_proof");
+    expect(result.turns.at(-1)?.customerReply).toContain("comprobante");
+    expect(result.turns.at(-1)?.customerReply).not.toMatch(/miercoles|jueves|viernes|2026/i);
   });
 
   it("does not ask for customer confirmation when a required field is missing", () => {

@@ -114,6 +114,11 @@ export interface CustomerConfirmationSummary {
   messageText: string;
 }
 
+export interface PaymentInstructions {
+  requiresProof: boolean;
+  messageText: string;
+}
+
 export interface ClosingDecision {
   shouldClose: boolean;
   reason?: "customer_declined_more_help" | "closing_prompt_timeout";
@@ -177,4 +182,5 @@ export interface FlowiseConversationState {
   pedido_en_progreso?: string | boolean;
   modalidad_entrega?: string;
   next_expected?: string;
+  comprobante_pago_recibido?: string | boolean;
 }

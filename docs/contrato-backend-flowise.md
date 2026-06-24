@@ -76,6 +76,7 @@ open
 collecting_order
 collecting_data
 ready_for_customer_confirmation
+awaiting_payment_proof
 ready_for_review
 sent_for_review
 closing_prompt_sent
@@ -100,6 +101,7 @@ El backend decide el estado segun:
 ask_for_order
 ask_for_data
 ask_customer_confirmation
+ask_payment_proof
 send_to_review
 escalate_to_human
 reply
@@ -107,7 +109,9 @@ reply
 
 `ask_customer_confirmation` significa que el backend ya valido datos, calculo subtotal/domicilio/total y debe mostrarle al cliente el resumen para que diga si esta correcto.
 
-`send_to_review` no significa preparar ni despachar. Significa que el cliente ya confirmo el resumen y el pedido esta listo para que el operario lo revise.
+`ask_payment_proof` significa que el cliente ya confirmo el resumen, el metodo de pago requiere transferencia y ahora debe recibir datos de pago y enviar comprobante.
+
+`send_to_review` no significa preparar ni despachar. Significa que el cliente ya confirmo el resumen y, si aplicaba transferencia, envio comprobante. El pedido esta listo para que el operario lo revise.
 
 ## Reglas duras
 
@@ -121,6 +125,11 @@ reply
 - Para V1, el domicilio es fijo `5000`.
 - En el futuro, el agente de confirmacion puede gestionar precio de domicilio solo si recibe una tabla/regla estructurada de backend.
 - El pedido no pasa a `send_to_review` hasta que el cliente confirme explicitamente el resumen.
+- Para Nequi, Bancolombia y Bre-B, el pedido tampoco pasa a `send_to_review` sin comprobante.
+- Datos de pago V1:
+  - Nequi: `3000000000`
+  - Bancolombia: `72600000000`
+  - Bre-B: `@test`
 
 ## Implementacion local
 

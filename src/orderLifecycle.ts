@@ -4,6 +4,7 @@ import type {
   DatosPedido,
   OrderPricingSummary,
   OrderReviewSummary,
+  PaymentInstructions,
   PedidoItem
 } from "./types.js";
 
@@ -15,6 +16,12 @@ export interface OrderReviewInput {
 }
 
 export const DEFAULT_DELIVERY_FEE = 5000;
+
+export const PAYMENT_ACCOUNTS = {
+  nequi: "3000000000",
+  bancolombia: "72600000000",
+  breb: "@test"
+} as const;
 
 const toppingPrices = new Map<string, number>([
   ["leche condensada", 2000],
@@ -116,6 +123,63 @@ export function buildCustomerConfirmationSummary(
     messageText: readyForCustomerConfirmation
       ? renderCustomerConfirmation(input, pricing)
       : "Aun faltan datos o precios para armar el resumen final del pedido."
+  };
+}
+
+export function paymentRequiresProof(method?: DatosPedido["metodo_pago"]): boolean {
+  return method === "nequi" || method === "bancolombia" || method === "breb";
+}
+
+export function buildPaymentInstructions(
+  method: DatosPedido["metodo_pago"],
+  total: number
+): PaymentInstructions {
+  if (method === "nequi") {
+    return {
+      requiresProof: true,
+      messageText: [
+        "Perfecto. Para continuar con la revision del pedido, puedes hacer la transferencia por Nequi:",
+        "",
+        `Nequi: ${PAYMENT_ACCOUNTS.nequi}`,
+        `Total: ${total}`,
+        "",
+        "Cuando la hagas, enviame el comprobante por aqui."
+      ].join("\n")
+    };
+  }
+
+  if (method === "bancolombia") {
+    return {
+      requiresProof: true,
+      messageText: [
+        "Perfecto. Para continuar con la revision del pedido, puedes hacer la transferencia a Bancolombia:",
+        "",
+        `Cuenta Bancolombia: ${PAYMENT_ACCOUNTS.bancolombia}`,
+        `Total: ${total}`,
+        "",
+        "Cuando la hagas, enviame el comprobante por aqui."
+      ].join("\n")
+    };
+  }
+
+  if (method === "breb") {
+    return {
+      requiresProof: true,
+      messageText: [
+        "Perfecto. Para continuar con la revision del pedido, puedes hacer la transferencia por Bre-B:",
+        "",
+        `Llave Bre-B: ${PAYMENT_ACCOUNTS.breb}`,
+        `Total: ${total}`,
+        "",
+        "Cuando la hagas, enviame el comprobante por aqui."
+      ].join("\n")
+    };
+  }
+
+  return {
+    requiresProof: false,
+    messageText:
+      "Perfecto, dejamos el pago en efectivo. Dejo tu pedido en revision con el equipo."
   };
 }
 

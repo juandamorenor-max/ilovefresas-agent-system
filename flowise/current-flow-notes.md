@@ -16,7 +16,7 @@ Start
       -> CONDITION PEDIDO CONFIRMADO
          -> Direct Reply pedido listo/revision
          -> Direct Reply pedir siguiente dato
-   -> AGENTE CONFIRMACION DE PEDIDO (pendiente de cablear cuando backend/n8n entregue totales)
+   -> AGENTE CONFIRMACION DE PEDIDO (requiere condicion por next_expected para confirmacion/comprobante)
    -> AGENTE GENERAL
       -> Direct Reply
 ```
@@ -28,7 +28,7 @@ Agentes actuales:
 - AGENTE PEDIDO
 - AGENTE DATOS
 - AGENTE GENERAL
-- AGENTE CONFIRMACION DE PEDIDO (contrato/prompt local listo; no cableado en produccion)
+- AGENTE CONFIRMACION DE PEDIDO (contrato/prompt local listo; requiere cableado por estado en produccion)
 
 No existen todavia como LLM separados:
 
@@ -89,3 +89,31 @@ Resultado seguro:
 Decision operativa:
 
 No se dejo cableado en Flowise todavia porque el Agentflow actual no recibe desde backend/n8n los campos estructurados `subtotal_productos`, `domicilio`, `total`, `faltantes` y `ready_for_customer_confirmation`. Cablearlo antes de eso podria hacer que el agente intente resumir con estado incompleto o fuerce escalamiento. La ruta existente de `CONDITION PEDIDO CONFIRMADO -> Direct Reply 3` fue restaurada despues de la prueba de cableado.
+
+### Actualizacion pendiente: pago y comprobante
+
+Fecha: 2026-06-24
+
+El contrato local ahora define una fase intermedia:
+
+```text
+ready_for_customer_confirmation
+-> awaiting_payment_proof
+-> ready_for_review
+```
+
+Para Nequi, Bancolombia y Bre-B, la respuesta `si` al resumen ya no debe mandar a revision humana. Debe volver a `AGENTE CONFIRMACION DE PEDIDO`, enviar datos de pago y pedir comprobante:
+
+- Nequi: `3000000000`
+- Bancolombia: `72600000000`
+- Bre-B: `@test`
+
+El canvas necesita una condicion por estado antes de las rutas normales:
+
+```text
+if next_expected == "confirmacion" -> AGENTE CONFIRMACION DE PEDIDO
+if next_expected == "comprobante_pago" -> AGENTE CONFIRMACION DE PEDIDO
+else -> Condition 0 normal
+```
+
+Sin esa condicion, un `si` despues del resumen puede caer en `AGENTE GENERAL`.

@@ -47,6 +47,16 @@ const targets: PromptTarget[] = [
     label: "AGENTE DATOS",
     marker: "Eres el AGENTE DATOS",
     promptPath: "prompts/agente-datos.md"
+  },
+  {
+    label: "AGENTE GENERAL",
+    marker: "Eres el AGENTE GENERAL",
+    promptPath: "prompts/agente-general.md"
+  },
+  {
+    label: "AGENTE CONFIRMACION DE PEDIDO",
+    marker: "Eres el AGENTE CONFIRMACION DE PEDIDO",
+    promptPath: "prompts/agente-confirmacion.md"
   }
 ];
 

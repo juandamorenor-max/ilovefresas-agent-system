@@ -17,6 +17,9 @@ Estado minimo compartido:
 - barrio
 - referencia
 - metodo_pago
+- pedido_confirmado_por_cliente
+- comprobante_pago_pendiente
+- comprobante_pago_recibido
 - ultima_pregunta_bot
 - ultimo_agente
 - pedido_en_progreso
@@ -30,7 +33,10 @@ Reglas madre:
 - Para domicilio, los datos minimos son nombre, direccion, barrio, referencia y metodo de pago.
 - Barrio solo no cuenta como direccion.
 - Direccion + barrio sin nombre/referencia/pago no esta completo.
-- El resumen final debe venir despues de productos + datos + pago + precios calculados.
+- El resumen final debe venir despues de productos + datos + metodo de pago + precios calculados.
+- Si el metodo de pago es Nequi, Bancolombia o Bre-B, despues de que el cliente confirme el resumen se deben enviar los datos de pago y esperar comprobante.
+- El pedido solo pasa a revision humana despues de recibir comprobante para Nequi/Bancolombia/Bre-B.
+- Si el metodo de pago es efectivo, no se pide comprobante.
 - Reclamos, reembolsos, descuentos, cobertura, disponibilidad exacta, tiempos exactos y costo exacto de domicilio escalan a humano/backend.
 
 Salida JSON comun:
@@ -46,3 +52,4 @@ Campos base:
 
 `state_patch` debe contener solo datos que el agente entendio con confianza.
 `next_expected` debe indicar la proxima etapa esperada: "cliente", "pedido", "datos", "confirmacion", "humano", "cerrado".
+Tambien puede ser "comprobante_pago" cuando el resumen ya fue aprobado y falta soporte de pago.
