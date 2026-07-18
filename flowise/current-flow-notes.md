@@ -1,5 +1,30 @@
 # Notas del flujo actual
 
+> **Actualizacion activa 2026-07-17:** produccion usa
+> `TURN_DECISION_OWNER=agents`. Las notas fechadas 2026-06-23/24 se conservan
+> abajo como historico y no describen por completo el canvas actual.
+
+```text
+Start -> ROUTER CENTRAL -> GUARD DE RUTA -> Condition route
+  -> AGENTE PEDIDO -> APLICAR OPERACIONES PEDIDO -> Direct Reply
+  -> AGENTE DATOS -> Condition -> AGENTE CONFIRMACION / Direct Reply
+  -> AGENTE MENU -> Condition -> respuestas de menu
+  -> AGENTE GENERAL -> Direct Reply
+  -> escalamiento -> Direct Reply humano
+```
+
+Estado actual:
+
+- Agentflow: `e52f27b3-06e2-4fb0-b853-30e936b99839`.
+- Checklist del canvas: `0`.
+- Flowise decide rutas, operaciones y progresion conversacional.
+- Railway rehidrata Flow State, valida operaciones, cotiza y persiste ordenes.
+- Export activo: `flowise/exports/agentflow-e52f27b3-2026-07-17-agents-owner.json`.
+- Rollback: `TURN_DECISION_OWNER=legacy`.
+- Contrato detallado: `docs/sistema/13-decisiones-conversacionales-flowise.md`.
+
+## Historico anterior
+
 ```text
 Start
 -> ROUTER CENTRAL

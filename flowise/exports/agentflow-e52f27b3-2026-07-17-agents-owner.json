@@ -1,0 +1,4596 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "type": "agentFlow",
+      "position": {
+        "x": -227.6681898585495,
+        "y": 201.35325152342494
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Start",
+        "version": 1.1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7EE787",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": false
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": false
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": false
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          },
+          {
+            "label": "Persist State",
+            "name": "startPersistState",
+            "type": "boolean",
+            "description": "Persist the state in the same session",
+            "optional": true,
+            "id": "startAgentflow_0-input-startPersistState-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "chatInput",
+          "startEphemeralMemory": false,
+          "startState": [
+            {
+              "key": "route",
+              "value": ""
+            },
+            {
+              "key": "confidence",
+              "value": "0"
+            },
+            {
+              "key": "reason",
+              "value": ""
+            },
+            {
+              "key": "mensaje_cliente",
+              "value": ""
+            },
+            {
+              "key": "nombre",
+              "value": ""
+            },
+            {
+              "key": "direccion",
+              "value": ""
+            },
+            {
+              "key": "barrio",
+              "value": ""
+            },
+            {
+              "key": "referencia",
+              "value": ""
+            },
+            {
+              "key": "metodo_pago",
+              "value": ""
+            },
+            {
+              "key": "items",
+              "value": "[]"
+            },
+            {
+              "key": "pedido_confirmado",
+              "value": "false"
+            },
+            {
+              "key": "needs_human",
+              "value": "false"
+            },
+            {
+              "key": "enviar_menu",
+              "value": "false"
+            },
+            {
+              "key": "phone",
+              "value": ""
+            },
+            {
+              "key": "channel",
+              "value": ""
+            },
+            {
+              "key": "menu_topic",
+              "value": ""
+            },
+            {
+              "key": "modalidad_entrega",
+              "value": "domicilio"
+            },
+            {
+              "key": "telefono",
+              "value": ""
+            },
+            {
+              "key": "ultima_pregunta_bot",
+              "value": ""
+            },
+            {
+              "key": "ultimo_agente",
+              "value": ""
+            },
+            {
+              "key": "pedido_en_progreso",
+              "value": "false"
+            },
+            {
+              "key": "configuracion_actual",
+              "value": ""
+            },
+            {
+              "key": "stage",
+              "value": "pedido"
+            },
+            {
+              "key": "pending_action",
+              "value": ""
+            },
+            {
+              "key": "target_item_id",
+              "value": ""
+            },
+            {
+              "key": "target_option_key",
+              "value": ""
+            },
+            {
+              "key": "validated_quote",
+              "value": ""
+            },
+            {
+              "key": "pedido_confirmado_por_cliente",
+              "value": "false"
+            }
+          ],
+          "startPersistState": true
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 103,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -227.6681898585495,
+        "y": 201.35325152342494
+      }
+    },
+    {
+      "id": "llmAgentflow_0",
+      "position": {
+        "x": -43.861146654744516,
+        "y": 192.0733565997266
+      },
+      "data": {
+        "id": "llmAgentflow_0",
+        "label": "ROUTER CENTRAL",
+        "version": 1.1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_0-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_0-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmMemoryType-options",
+            "display": false
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmUserMessage-string",
+            "display": false
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_0-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "Eres el ROUTER CENTRAL de I Love Fresas Barranquilla.\n\nClasifica el último mensaje. No respondes al cliente y no modificas estado.\n\nEstado de progresión:\n- stage: {{$flow.state.stage}}\n- pending_action: {{$flow.state.pending_action}}\n- target_item_id: {{$flow.state.target_item_id}}\n- target_option_key: {{$flow.state.target_option_key}}\n- items: {{$flow.state.items}}\n\nRutas:\n- pedido: agregar, configurar, modificar o corregir productos; también respuestas al foco de pedido.\n- datos: entregar o corregir nombre, teléfono, dirección, barrio, referencia o método de pago.\n- confirmacion: aceptar, rechazar o corregir el resumen validado.\n- menu: descubrir catálogo, precios generales o pedir menú/PDF fuera de un foco de configuración.\n- general: saludo o interacción social relacionada con el restaurante.\n- escalamiento: humano, reclamo, reembolso, demora o decisión operativa no autorizada.\n\nPrioridad contextual:\n0. Si el mensaje contiene `<tool_result_quote>`, route=confirmacion. Es un resultado de herramienta ya validado que debe presentarse al cliente.\n1. Si pending_action es configure_item o ask_more_products, route=pedido, incluso para respuestas cortas o preguntas sobre las opciones actuales.\n2. Si stage=datos y el mensaje entrega/corrige datos, route=datos.\n3. Si stage=confirmacion, una decisión o corrección sobre el resumen va a confirmacion.\n4. Riesgo operativo explícito va a escalamiento.\n5. Menú solo aplica cuando el cliente busca descubrir la oferta y no está respondiendo un foco activo.\n\nDevuelve solo JSON válido:\n{\n  \"route\": \"menu|pedido|datos|confirmacion|general|escalamiento\",\n  \"confidence\": 0.0,\n  \"reason\": \"\"\n}"
+            },
+            {
+              "role": "user",
+              "content": "{{question}} "
+            }
+          ],
+          "llmEnableMemory": false,
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "route",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "menu, pedido, datos, confirmacion, general o escalamiento"
+            },
+            {
+              "key": "confidence",
+              "type": "number",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Confianza entre 0 y 1"
+            },
+            {
+              "key": "reason",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Razon breve"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "route",
+              "value": "{{ output.route }}"
+            },
+            {
+              "key": "confidence",
+              "value": "{{ output.confidence }}"
+            },
+            {
+              "key": "reason",
+              "value": "{{ output.reason }}"
+            }
+          ],
+          "llmModelConfig": {
+            "credential": "",
+            "modelName": "gpt-5.4-nano",
+            "temperature": "0",
+            "streaming": true,
+            "allowImageUploads": "",
+            "reasoning": "",
+            "maxTokens": "149",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "baseOptions": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_0-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 194,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -43.861146654744516,
+        "y": 192.0733565997266
+      },
+      "dragging": false
+    },
+    {
+      "id": "conditionAgentflow_0",
+      "position": {
+        "x": 210.13066096102222,
+        "y": 153.60709769832135
+      },
+      "data": {
+        "id": "conditionAgentflow_0",
+        "label": "Condition 0",
+        "version": 1,
+        "name": "conditionAgentflow",
+        "type": "Condition",
+        "color": "#FFB938",
+        "baseClasses": [
+          "Condition"
+        ],
+        "category": "Agent Flows",
+        "description": "Split flows based on If Else conditions",
+        "inputParams": [
+          {
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "array",
+            "description": "Values to compare",
+            "acceptVariable": true,
+            "default": [
+              {
+                "type": "string",
+                "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.route\" data-label=\"$flow.state.route\" data-mention-suggestion-char=\"@\">{{ $flow.state.route }}</span></p>",
+                "operation": "equal",
+                "value2": "<p>escalamiento</p>"
+              }
+            ],
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "string",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Contains",
+                    "name": "contains"
+                  },
+                  {
+                    "label": "Ends With",
+                    "name": "endsWith"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Contains",
+                    "name": "notContains"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Regex",
+                    "name": "regex"
+                  },
+                  {
+                    "label": "Starts With",
+                    "name": "startsWith"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "string",
+                "default": "",
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                },
+                "hide": {
+                  "conditions[$index].operation": [
+                    "isEmpty",
+                    "notEmpty"
+                  ]
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "number",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Smaller",
+                    "name": "smaller"
+                  },
+                  {
+                    "label": "Smaller Equal",
+                    "name": "smallerEqual"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Larger",
+                    "name": "larger"
+                  },
+                  {
+                    "label": "Larger Equal",
+                    "name": "largerEqual"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "number",
+                "default": 0,
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "boolean",
+                "default": false,
+                "description": "First value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "boolean",
+                "default": false,
+                "description": "Second value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              }
+            ],
+            "id": "conditionAgentflow_0-input-conditions-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "conditions": [
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\" data-mention-suggestion-char=\"@\">{{ customFunctionAgentflow_0 }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>escalamiento</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\" data-mention-suggestion-char=\"@\">{{ customFunctionAgentflow_0 }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>menu</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\" data-mention-suggestion-char=\"@\">{{ customFunctionAgentflow_0 }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>pedido</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\" data-mention-suggestion-char=\"@\">{{ customFunctionAgentflow_0 }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>datos</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"customFunctionAgentflow_0\" data-label=\"customFunctionAgentflow_0\" data-mention-suggestion-char=\"@\">{{ customFunctionAgentflow_0 }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>general</p>"
+            },
+            {
+              "type": "string",
+              "value1": "{{ $flow.state.route }}",
+              "operation": "equal",
+              "value2": "confirmacion"
+            }
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conditionAgentflow_0-output-0",
+            "label": 0,
+            "name": 0,
+            "description": "Condition 0"
+          },
+          {
+            "id": "conditionAgentflow_0-output-1",
+            "label": 1,
+            "name": 1,
+            "description": "Condition 1"
+          },
+          {
+            "id": "conditionAgentflow_0-output-2",
+            "label": 2,
+            "name": 2,
+            "description": "Condition 2"
+          },
+          {
+            "id": "conditionAgentflow_0-output-3",
+            "label": 3,
+            "name": 3,
+            "description": "Condition 3"
+          },
+          {
+            "id": "conditionAgentflow_0-output-4",
+            "label": 4,
+            "name": 4,
+            "description": "Condition 4"
+          },
+          {
+            "id": "conditionAgentflow_0-output-5",
+            "label": 5,
+            "name": 5,
+            "description": "Condition 5"
+          },
+          {
+            "id": "conditionAgentflow_0-output-6",
+            "label": 6,
+            "name": 6,
+            "description": "Else"
+          }
+        ],
+        "outputs": {
+          "conditionAgentflow": ""
+        },
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 147,
+      "height": 160,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 210.13066096102222,
+        "y": 153.60709769832135
+      },
+      "dragging": false
+    },
+    {
+      "id": "httpAgentflow_0",
+      "position": {
+        "x": 1161.774303773075,
+        "y": -72.30708039027138
+      },
+      "data": {
+        "id": "httpAgentflow_0",
+        "label": "HTTP SEND MENU PDF",
+        "version": 1.1,
+        "name": "httpAgentflow",
+        "type": "HTTP",
+        "color": "#FF7F7F",
+        "baseClasses": [
+          "HTTP"
+        ],
+        "category": "Agent Flows",
+        "description": "Send a HTTP request",
+        "inputParams": [
+          {
+            "label": "HTTP Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "httpBasicAuth",
+              "httpBearerToken",
+              "httpApiKey"
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-credential-credential",
+            "display": true
+          },
+          {
+            "label": "Method",
+            "name": "method",
+            "type": "options",
+            "options": [
+              {
+                "label": "GET",
+                "name": "GET"
+              },
+              {
+                "label": "POST",
+                "name": "POST"
+              },
+              {
+                "label": "PUT",
+                "name": "PUT"
+              },
+              {
+                "label": "DELETE",
+                "name": "DELETE"
+              },
+              {
+                "label": "PATCH",
+                "name": "PATCH"
+              }
+            ],
+            "default": "GET",
+            "id": "httpAgentflow_0-input-method-options",
+            "display": true
+          },
+          {
+            "label": "URL",
+            "name": "url",
+            "type": "string",
+            "acceptVariable": true,
+            "id": "httpAgentflow_0-input-url-string",
+            "display": true
+          },
+          {
+            "label": "Headers",
+            "name": "headers",
+            "type": "array",
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "default": ""
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "default": "",
+                "acceptVariable": true
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-headers-array",
+            "display": true
+          },
+          {
+            "label": "Query Params",
+            "name": "queryParams",
+            "type": "array",
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "default": ""
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "default": "",
+                "acceptVariable": true
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-queryParams-array",
+            "display": true
+          },
+          {
+            "label": "Body Type",
+            "name": "bodyType",
+            "type": "options",
+            "options": [
+              {
+                "label": "JSON",
+                "name": "json"
+              },
+              {
+                "label": "Raw",
+                "name": "raw"
+              },
+              {
+                "label": "Form Data",
+                "name": "formData"
+              },
+              {
+                "label": "x-www-form-urlencoded",
+                "name": "xWwwFormUrlencoded"
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-bodyType-options",
+            "display": true
+          },
+          {
+            "label": "Body",
+            "name": "body",
+            "type": "string",
+            "acceptVariable": true,
+            "rows": 4,
+            "show": {
+              "bodyType": [
+                "raw",
+                "json"
+              ]
+            },
+            "optional": true,
+            "id": "httpAgentflow_0-input-body-string",
+            "display": true
+          },
+          {
+            "label": "Body",
+            "name": "body",
+            "type": "array",
+            "acceptVariable": true,
+            "show": {
+              "bodyType": [
+                "xWwwFormUrlencoded",
+                "formData"
+              ]
+            },
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "default": ""
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "default": "",
+                "acceptVariable": true
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-body-array",
+            "display": false
+          },
+          {
+            "label": "Response Type",
+            "name": "responseType",
+            "type": "options",
+            "options": [
+              {
+                "label": "JSON",
+                "name": "json"
+              },
+              {
+                "label": "Text",
+                "name": "text"
+              },
+              {
+                "label": "Array Buffer",
+                "name": "arraybuffer"
+              },
+              {
+                "label": "Raw (Base64)",
+                "name": "base64"
+              }
+            ],
+            "optional": true,
+            "id": "httpAgentflow_0-input-responseType-options",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "method": "POST",
+          "url": "<p>https://tudashboard.com/api/send-menu</p>",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "<p>application/json</p>"
+            }
+          ],
+          "queryParams": "",
+          "bodyType": "json",
+          "responseType": "json",
+          "body": "{\n\n  \"action\": \"send_menu_pdf\",\n\n  \"channel\": \"whatsapp\",\n\n  \"phone\": \"{{$flow.state.phone}}\",\n\n  \"sessionId\": \"{{$flow.sessionId}}\",\n\n  \"conversationId\": \"{{$flow.sessionId}}\"\n\n}",
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "httpAgentflow_0-output-httpAgentflow",
+            "label": "HTTP",
+            "name": "httpAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 224,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1161.774303773075,
+        "y": -72.30708039027138
+      }
+    },
+    {
+      "id": "llmAgentflow_1",
+      "position": {
+        "x": 524.7997696227345,
+        "y": 177.16175933586234
+      },
+      "data": {
+        "id": "llmAgentflow_1",
+        "label": "AGENTE PEDIDO",
+        "version": 1.1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_1-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_1-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_1-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_1-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_1-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_1-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_1-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatXAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "Eres el AGENTE PEDIDO de I Love Fresas Barranquilla.\n\nTu única responsabilidad es conducir la construcción del pedido: productos, cantidades, opciones obligatorias, modificadores, correcciones y la pregunta final de si el cliente quiere agregar otro producto.\n\nNo calculas precios, no afirmas disponibilidad fuera del catálogo recibido, no recolectas datos de envío y no confirmas órdenes. Devuelves operaciones cerradas; un Custom Function las valida y aplica al Flow State.\n\n<estado>\nstage: {{$flow.state.stage}}\npending_action: {{$flow.state.pending_action}}\ntarget_item_id: {{$flow.state.target_item_id}}\ntarget_option_key: {{$flow.state.target_option_key}}\nitems: {{$flow.state.items}}\nultima_pregunta_bot: {{$flow.state.ultima_pregunta_bot}}\n</estado>\n\n<catalogo_dinamico>\n{{$vars.available_catalog}}\n</catalogo_dinamico>\n\nEl mismo catálogo puede llegar dentro de `<available_catalog>` en el mensaje del turno. Usa ese bloque cuando la variable esté vacía.\n\n<reglas>\n1. Usa exclusivamente IDs, nombres, modificadores y requiredOptions presentes en catalogo_dinamico.\n2. Si un producto configurable tiene cantidad mayor a uno, crea una operación add_item por cada unidad, siempre quantity=1. Cada unidad debe tener ID distinto.\n3. Completa primero la unidad enfocada. No copies opciones a otras unidades salvo petición explícita: \"los dos iguales\", \"ambos con...\" o equivalente.\n4. Si pending_action=configure_item, interpreta el mensaje según target_item_id y target_option_key. Una respuesta corta pertenece a ese campo.\n5. Si el cliente entrega varias opciones juntas, aprovéchalas en el orden y significado correcto y pregunta solo lo faltante.\n   Los valores pueden repetirse y siguen representando campos distintos. Por ejemplo, si el foco requiere fruta, sabor de helado y salsa, tres valores se asignan en ese orden aunque los dos primeros sean iguales.\n6. Si pregunta \"cuáles tienes\" durante configure_item, muestra únicamente las opciones válidas del campo enfocado y no modifica el pedido.\n7. Cuando todas las opciones obligatorias estén completas, action=ask_more_products y pregunta: \"¿Quieres agregar otro producto al pedido?\"\n8. Con pending_action=ask_more_products, una negativa explícita produce action=collect_data. Una afirmación mantiene action=ask_more_products y pregunta qué producto quiere. Un producto concreto produce sus operaciones y continúa pedido.\n   Cuando produzcas action=collect_data, usa esta respuesta completa para que el cliente pueda continuar sin otro turno intermedio:\n\n   \"Perfecto 😊 Para el domicilio me compartes estos datos, por favor:\n\n   Nombre:\n   Dirección:\n   Barrio:\n   Referencia:\n   Método de pago: Nequi, Bancolombia, Bre-B o efectivo\"\n\n9. Cualquier corrección debe apuntar al item exacto. \"El segundo con mango\" modifica solo la segunda unidad compatible.\n10. Si agrega un modificador a un producto explícito, úsalo como target. Si no hay target claro, action=clarify y pregunta mencionando solo items reales del pedido.\n11. Nunca avances a collect_data mientras falte una requiredOption.\n12. No inventes productos, opciones, disponibilidad, precios ni cantidades.\n</reglas>\n\n<operaciones_permitidas>\nadd_item, remove_item, change_quantity, set_required_option, add_modifier, remove_modifier, correct_item, copy_item_configuration.\n\nFormato de operations:\n- add_item: {\"type\":\"add_item\",\"product_id\":\"...\",\"quantity\":1}\n- remove_item: {\"type\":\"remove_item\",\"target_item_id\":\"...\"}\n- change_quantity: {\"type\":\"change_quantity\",\"target_item_id\":\"...\",\"quantity\":1}\n- set_required_option: {\"type\":\"set_required_option\",\"target_item_id\":\"...\",\"option_key\":\"...\",\"value\":\"...\"}\n- add_modifier/remove_modifier: {\"type\":\"...\",\"target_item_id\":\"...\",\"modifier_id\":\"...\"}\n- correct_item: {\"type\":\"correct_item\",\"target_item_id\":\"...\",\"product_id\":\"...\"}\n- copy_item_configuration: {\"type\":\"copy_item_configuration\",\"source_item_id\":\"...\",\"target_item_ids\":[\"...\"]}\n</operaciones_permitidas>\n\n<salida>\nDevuelve solo JSON válido:\n{\n  \"operations\": \"[]\",\n  \"action\": \"configure_item|ask_more_products|collect_data|clarify\",\n  \"target_item_id\": \"\",\n  \"target_option_key\": \"\",\n  \"reply\": \"\",\n  \"needs_human\": false\n}\n\noperations debe ser un array JSON serializado como string. reply debe ser breve, natural, colombiano y con máximo un emoji suave.\n</salida>"
+            },
+            {
+              "role": "user",
+              "content": "{{question}}"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "operations",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Array JSON serializado de operaciones permitidas"
+            },
+            {
+              "key": "action",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "configure_item, ask_more_products, collect_data o clarify"
+            },
+            {
+              "key": "target_item_id",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "ID del item enfocado o vacio"
+            },
+            {
+              "key": "target_option_key",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Clave de required option enfocada o vacia"
+            },
+            {
+              "key": "reply",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Respuesta visible breve"
+            },
+            {
+              "key": "needs_human",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Solo ante bloqueo real"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "mensaje_cliente",
+              "value": "{{ output.reply }}"
+            },
+            {
+              "key": "needs_human",
+              "value": "{{ output.needs_human }}"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "grok-3-mini",
+            "temperature": "0.2",
+            "streaming": true,
+            "allowImageUploads": "",
+            "maxTokens": "",
+            "llmModel": "chatXAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_1-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 181,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 524.7997696227345,
+        "y": 177.16175933586234
+      },
+      "dragging": false
+    },
+    {
+      "id": "directReplyAgentflow_0",
+      "position": {
+        "x": 1090,
+        "y": 173
+      },
+      "data": {
+        "id": "directReplyAgentflow_0",
+        "label": "Direct Reply 0",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_0-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "{{$flow.state.mensaje_cliente}}"
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 867.6080033867293,
+        "y": 173.8060776453916
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_2",
+      "position": {
+        "x": 525.1749589491433,
+        "y": 342.32958467979444
+      },
+      "data": {
+        "id": "llmAgentflow_2",
+        "label": "AGENTE DATOS",
+        "version": 1.1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_2-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_2-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_2-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_2-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_2-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_2-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_2-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatXAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "Eres el AGENTE DATOS de I Love Fresas Barranquilla.\n\nTu trabajo es recolectar y corregir datos de entrega/contacto/pago. No modificas productos ni calculas precios. Cuando todos los datos obligatorios estén completos, devuelve action=\"request_quote\"; Railway calculará y validará la cotización.\n\nNota para este Flowise actual:\n\nEl campo `pedido_confirmado` NO significa confirmacion final del cliente. En este canvas se usa como flag tecnico para pasar al agente de confirmacion/resumen cuando ya hay datos completos.\n\n<contrato_comun>\n\n- El backend/estado es la fuente de verdad.\n- El pedido es para domicilio por defecto.\n- No preguntes \"domicilio o recoger\".\n- Solo registra recogida si el cliente lo dice explicitamente.\n- \"/newchat\" debe llegar con estado nuevo; si no estas seguro del estado, pide plantilla completa.\n- Ningun pedido queda confirmado sin productos, datos, pago, precios y confirmacion explicita del resumen.\n\n</contrato_comun>\n\n<estado_disponible>\n\nitems: {{$flow.state.items}}\n\nmodalidad_entrega: {{$flow.state.modalidad_entrega}}\n\nnombre: {{$flow.state.nombre}}\n\ntelefono: {{$flow.state.telefono}}\n\ndireccion: {{$flow.state.direccion}}\n\nbarrio: {{$flow.state.barrio}}\n\nreferencia: {{$flow.state.referencia}}\n\nmetodo_pago: {{$flow.state.metodo_pago}}\n\nultima_pregunta_bot: {{$flow.state.ultima_pregunta_bot}}\n\nultimo_agente: {{$flow.state.ultimo_agente}}\n\npedido_en_progreso: {{$flow.state.pedido_en_progreso}}\n\n</estado_disponible>\n\n<datos_obligatorios>\n\nPara domicilio:\n\n- nombre\n- direccion\n- barrio\n- referencia\n- metodo_pago\n\nPara recoger:\n\n- nombre\n- metodo_pago\n\n</datos_obligatorios>\n\n<reglas_de_extraccion>\n\n- Si ultima_pregunta_bot=\"pedido_otro_producto\" o \"pedido_agregar_mas\", o el mensaje anterior visible del bot fue \"Quieres agregar otro producto al pedido?\", y el cliente envia nombre, direccion, referencia, barrio, telefono o metodo de pago:\n  - Interpreta que el cliente ya no quiere anadir otro producto.\n  - Extrae y guarda el dato normalmente.\n  - Pide solo los datos faltantes.\n  - No lo devuelvas a pedido salvo que el mensaje sea claramente producto, topping, adicion, cantidad, sabor o salsa.\n- \"para domicilio\", \"a domicilio\", \"domicilio\", \"me lo envias\", \"me lo mandas\" => modalidad_entrega=\"domicilio\".\n- \"para recoger\", \"lo recojo\", \"paso por el\", \"voy por el\" => modalidad_entrega=\"recoger\".\n- Si el cliente envia datos por lineas o etiquetas, extrae cada campo por su etiqueta exacta.\n- Ejemplo:\n\n  Nombre: Juan Moreno\n\n  Direccion: cra 39a # 41-99\n\n  Barrio: Cabecera del Llano\n\n  Referencia: edificio Versace\n\n  Metodo de pago: Nequi\n\n  Debe producir:\n\n  nombre=\"Juan Moreno\"\n\n  direccion=\"cra 39a # 41-99\"\n\n  barrio=\"Cabecera del Llano\"\n\n  referencia=\"edificio Versace\"\n\n  metodo_pago=\"nequi\"\n- Nunca mezcles varias etiquetas dentro de un mismo campo. Si nombre contiene \"Direccion:\" o \"Barrio:\", esta mal extraido.\n- Si el texto llega en una sola linea pero con etiquetas, usa las etiquetas como separadores.\n- Si el cliente envia datos en mensajes separados y sin etiqueta, interpreta el dato por significado:\n  - \"Nequi\", \"neqi\", \"Bancolombia\", \"Bre-B\", \"Bre B\", \"Breb\", \"breb\", \"efectivo\" => metodo_pago.\n  - Textos con \"cra\", \"carrera\", \"calle\", \"cl\", \"avenida\", \"av\", \"#\", \"diagonal\", \"transversal\" => direccion.\n  - Textos con \"edificio\", \"torre\", \"apto\", \"apartamento\", \"porteria\", \"casa\", \"local\", \"conjunto\", \"piso\" => referencia.\n  - Textos que parecen zona/barrio conocido y no tienen numero de direccion => barrio.\n  - Textos de 2 a 4 palabras que parecen nombre de persona y no tienen indicadores de direccion/referencia/pago => nombre.\n- Si un mensaje sin etiqueta podria ser direccion y barrio juntos, separa barrio y direccion cuando haya coma o estructura clara.\n- Si no puedes inferir un dato suelto con confianza, no lo inventes: pregunta \"Ese dato corresponde a nombre, direccion, barrio, referencia o metodo de pago?\"\n- Barrio solo no es direccion.\n- \"Cabecera del Llano\" solo es barrio/zona, no direccion.\n- \"Cabecera del Llano, Cra 39A # 41-99\" trae barrio y direccion.\n- Si hay direccion y barrio pero faltan nombre, referencia o pago, pide solo los faltantes.\n- Si hay nombre, referencia, metodo_pago y direccion pero falta barrio, pide solo barrio.\n- Metodo de pago valido: Nequi, Bancolombia, Bre-B, efectivo.\n- Normaliza metodo_pago asi: \"neqi\" => \"nequi\"; \"bre-b\", \"bre b\" o \"breb\" => \"breb\".\n- No aceptes pago ambiguo como completo.\n- No pidas telefono si el canal Telegram/WhatsApp ya lo provee, salvo que el negocio lo exija luego.\n\n</reglas_de_extraccion>\n\n<plantilla_completa_domicilio>\n\nUsa esta plantilla cuando no tengas datos suficientes o el cliente acaba de terminar el pedido:\n\n\"Perfecto. Para el domicilio me compartes estos datos, por favor:\n\nNombre:\n\nDireccion:\n\nBarrio:\n\nReferencia:\n\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo\"\n\n</plantilla_completa_domicilio>\n\n<plantilla_faltantes>\n\nSi ya tienes algunos datos, pide todos los faltantes en un solo mensaje:\n\n\"Perfecto. Para el domicilio me faltan:\n\nNombre:\n\nDireccion:\n\nBarrio:\n\nReferencia:\n\nMetodo de pago: Nequi, Bancolombia, Bre-B o efectivo\"\n\nIncluye solo los campos que falten.\n\n</plantilla_faltantes>\n\n<escalamiento>\n\nNo escales datos normales.\n\nEscala solo si el cliente pregunta costo exacto de domicilio/envio, cobertura/zona, disponibilidad exacta, tiempo exacto, reclamo, reembolso, descuento o humano.\n\n</escalamiento>\n\n<salida_obligatoria>\n\nDevuelve solo JSON valido:\n\n{\n\n  \"mensaje_cliente\": \"\",\n\n  \"state_patch\": {\n\n```\n\"modalidad_entrega\": \"domicilio|recoger\",\n\n\"nombre\": \"\",\n\n\"telefono\": \"\",\n\n\"direccion\": \"\",\n\n\"barrio\": \"\",\n\n\"referencia\": \"\",\n\n\"metodo_pago\": \"\",\n\n\"ultimo_agente\": \"datos\",\n\n\"ultima_pregunta_bot\": \"\"\n```\n\n  },\n\n  \"next_expected\": \"pedido|datos|confirmacion|humano\",\n\n  \"needs_human\": false,\n\n  \"datos\": {\n\n```\n\"modalidad_entrega\": \"\",\n\n\"nombre\": \"\",\n\n\"telefono\": \"\",\n\n\"direccion\": \"\",\n\n\"barrio\": \"\",\n\n\"referencia\": \"\",\n\n\"metodo_pago\": \"\"\n```\n\n  },\n\n  \"siguiente_pregunta\": \"\",\n\n  \"completo\": false,\n\n  \"pedido_confirmado\": false\n\n}\n\n</salida_obligatoria>\n\n<invariantes>\n\n- No omitas direccion si solo tienes barrio.\n- No confirmes pedido.\n- No inventes direccion, barrio, referencia ni metodo de pago.\n- Si completo=true, next_expected=\"confirmacion\".\n- En este canvas, si ya tienes nombre, direccion, barrio, referencia y metodo_pago para domicilio, devuelve action=\"request_quote\" y pedido_confirmado=false para que la condicion pase a AGENTE CONFIRMACION DE PEDIDO.\n- Si falta cualquier dato obligatorio, pedido_confirmado=false.\n- Si el cliente envio todos los datos con etiquetas, devuelve mensaje_cliente=\"\" o \"Listo, ya tengo tus datos.\" y action=\"request_quote\" y pedido_confirmado=false.\n- Si el cliente envia un solo dato valido, guarda ese dato en state_patch, pide solo los faltantes, y no borres datos anteriores.\n\n</invariantes>\n\n"
+            },
+            {
+              "role": "user",
+              "content": "{{question}} "
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "mensaje_cliente",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Respuesta corta y natural para el cliente este turno."
+            },
+            {
+              "key": "nombre",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Nombre del cliente. Vacío si falta."
+            },
+            {
+              "key": "direccion",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Dirección de entrega. Vacío si falta."
+            },
+            {
+              "key": "barrio",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Barrio de entrega. Vacío si falta."
+            },
+            {
+              "key": "referencia",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Referencia: casa, edificio, torre, apartamento, color de puerta, indicaciones. Vacío si falta."
+            },
+            {
+              "key": "metodo_pago",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Uno de: nequi, bancolombia, breb, efectivo. Vacío si falta."
+            },
+            {
+              "key": "pedido_confirmado",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "true solo si hay productos, datos completos, método de pago y confirmación explícita del cliente."
+            },
+            {
+              "key": "needs_human",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "true si hay reclamo, confusión grave o se necesita una persona."
+            },
+            {
+              "key": "action",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "request_quote cuando los datos estén completos; collect_data mientras falten"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "mensaje_cliente",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.mensaje_cliente\" data-label=\"output.mensaje_cliente\" data-mention-suggestion-char=\"@\">{{ output.mensaje_cliente }}</span></p>"
+            },
+            {
+              "key": "nombre",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.nombre\" data-label=\"output.nombre\" data-mention-suggestion-char=\"@\">{{ output.nombre }}</span></p>"
+            },
+            {
+              "key": "direccion",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.direccion\" data-label=\"output.direccion\" data-mention-suggestion-char=\"@\">{{ output.direccion }}</span></p>"
+            },
+            {
+              "key": "barrio",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.barrio\" data-label=\"output.barrio\" data-mention-suggestion-char=\"@\">{{ output.barrio }}</span></p>"
+            },
+            {
+              "key": "referencia",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.referencia\" data-label=\"output.referencia\" data-mention-suggestion-char=\"@\">{{ output.referencia }}</span></p>"
+            },
+            {
+              "key": "metodo_pago",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.metodo_pago\" data-label=\"output.metodo_pago\" data-mention-suggestion-char=\"@\">{{ output.metodo_pago }}</span></p>"
+            },
+            {
+              "key": "pedido_confirmado",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.pedido_confirmado\" data-label=\"output.pedido_confirmado\" data-mention-suggestion-char=\"@\">{{ output.pedido_confirmado }}</span></p>"
+            },
+            {
+              "key": "needs_human",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.needs_human\" data-label=\"output.needs_human\" data-mention-suggestion-char=\"@\">{{ output.needs_human }}</span></p>"
+            },
+            {
+              "key": "stage",
+              "value": "datos"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "grok-3-mini-fast",
+            "temperature": "0.2",
+            "streaming": true,
+            "allowImageUploads": "",
+            "maxTokens": "",
+            "llmModel": "chatXAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_2-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 199,
+      "height": 72,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 525.1749589491433,
+        "y": 342.32958467979444
+      }
+    },
+    {
+      "id": "directReplyAgentflow_1",
+      "position": {
+        "x": 1224.5141516587773,
+        "y": 414.7116238931606
+      },
+      "data": {
+        "id": "directReplyAgentflow_1",
+        "label": "Direct Reply 1",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_1-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "{{llmAgentflow_2.output.mensaje_cliente}}",
+          "undefined": ""
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 160,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1224.5141516587773,
+        "y": 414.7116238931606
+      },
+      "dragging": false
+    },
+    {
+      "id": "conditionAgentflow_1",
+      "position": {
+        "x": 848.4543970885022,
+        "y": 339.49967297910575
+      },
+      "data": {
+        "id": "conditionAgentflow_1",
+        "label": "CONDITION PEDIDO CONFIRMADO",
+        "version": 1,
+        "name": "conditionAgentflow",
+        "type": "Condition",
+        "color": "#FFB938",
+        "baseClasses": [
+          "Condition"
+        ],
+        "category": "Agent Flows",
+        "description": "Split flows based on If Else conditions",
+        "inputParams": [
+          {
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "array",
+            "description": "Values to compare",
+            "acceptVariable": true,
+            "default": [
+              {
+                "type": "boolean",
+                "value1": "",
+                "operation": "equal",
+                "value2": ""
+              }
+            ],
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "string",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Contains",
+                    "name": "contains"
+                  },
+                  {
+                    "label": "Ends With",
+                    "name": "endsWith"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Contains",
+                    "name": "notContains"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Regex",
+                    "name": "regex"
+                  },
+                  {
+                    "label": "Starts With",
+                    "name": "startsWith"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "string",
+                "default": "",
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                },
+                "hide": {
+                  "conditions[$index].operation": [
+                    "isEmpty",
+                    "notEmpty"
+                  ]
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "number",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Smaller",
+                    "name": "smaller"
+                  },
+                  {
+                    "label": "Smaller Equal",
+                    "name": "smallerEqual"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Larger",
+                    "name": "larger"
+                  },
+                  {
+                    "label": "Larger Equal",
+                    "name": "largerEqual"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "number",
+                "default": 0,
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "boolean",
+                "default": false,
+                "description": "First value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "boolean",
+                "default": false,
+                "description": "Second value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              }
+            ],
+            "id": "conditionAgentflow_1-input-conditions-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "conditions": [
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedido_confirmado\" data-label=\"$flow.state.pedido_confirmado\" data-mention-suggestion-char=\"@\">{{ $flow.state.pedido_confirmado }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>true</p>"
+            }
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conditionAgentflow_1-output-0",
+            "label": "Condition",
+            "name": "conditionAgentflow"
+          },
+          {
+            "id": "conditionAgentflow_1-output-1",
+            "label": "Condition",
+            "name": "conditionAgentflow"
+          }
+        ],
+        "outputs": {
+          "conditionAgentflow": ""
+        },
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 301,
+      "height": 80,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 848.4543970885022,
+        "y": 339.49967297910575
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_3",
+      "position": {
+        "x": 534.9069193921706,
+        "y": 573.376285010082
+      },
+      "data": {
+        "id": "llmAgentflow_3",
+        "label": "AGENTE GENERAL",
+        "version": 1.1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_3-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_3-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_3-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_3-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_3-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_3-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_3-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "Eres el AGENTE GENERAL de I Love Fresas Barranquilla.\n\nTu funcion es responder saludos, agradecimientos y small talk breve.\n\nNo eres router, no eres agente de pedido, no eres agente de datos, no eres menu y no confirmas pedidos.\n\n<contrato_comun> - El backend/estado es la fuente de verdad. - El pedido es para domicilio por defecto. - No preguntes \"domicilio o recoger\". - Si recibes por error algo que parece pedido, datos, menu o escalamiento, no improvises; responde corto y deja una pista para que el router corrija. - Si hay item activo y el cliente dice \"no\", \"solo eso\", \"nada mas\", \"listo\" o similar, eso no es small talk. </contrato_comun> <estado_disponible> items: {{$flow.state.items}} modalidad_entrega: {{$flow.state.modalidad_entrega}} nombre: {{$flow.state.nombre}} direccion: {{$flow.state.direccion}} barrio: {{$flow.state.barrio}} referencia: {{$flow.state.referencia}} metodo_pago: {{$flow.state.metodo_pago}} ultima_pregunta_bot: {{$flow.state.ultima_pregunta_bot}} ultimo_agente: {{$flow.state.ultimo_agente}} pedido_en_progreso: {{$flow.state.pedido_en_progreso}} </estado_disponible> <estilo> - Espanol natural colombiano. - Corto, claro y amable. - No uses tratamientos como amor, mi amor, corazon, reina, rey, bebe o similares. - Puedes sonar calido, pero no abras formularios. </estilo> <respuestas> Si el cliente saluda: \"Hola! Bienvenido a I Love Fresas Barranquilla. Que se te antoja hoy?\" \n\nSi agradece:  \n\"Con gusto. Aqui estoy para ayudarte.\"\n\nSi dice ok/listo sin contexto claro:  \n\"Listo. Me cuentas que se te antoja.\"\n\nSi recibes por error un \"no\" contextual y hay items:  \n\"Perfecto. Para seguir con el pedido, me compartes los datos de domicilio?\"  \n</respuestas>\n\n<salida_obligatoria> Devuelve solo JSON valido: \n\n{  \n\"mensaje_cliente\": \"\",  \n\"state_patch\": {  \n\"ultimo_agente\": \"general\",  \n\"ultima_pregunta_bot\": \"\"  \n},  \n\"next_expected\": \"cliente\",  \n\"needs_human\": false  \n}  \n</salida_obligatoria>"
+            },
+            {
+              "role": "user",
+              "content": "{{question}}"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "mensaje_cliente",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Respuesta corta para el cliente."
+            },
+            {
+              "key": "needs_human",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "true si debe pasar a una persona."
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "mensaje_cliente",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.mensaje_cliente\" data-label=\"output.mensaje_cliente\" data-mention-suggestion-char=\"@\">{{ output.mensaje_cliente }}</span><br></p>"
+            },
+            {
+              "key": "needs_human",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.needs_human\" data-label=\"output.needs_human\" data-mention-suggestion-char=\"@\">{{ output.needs_human }}</span></p>"
+            }
+          ],
+          "llmModelConfig": {
+            "credential": "",
+            "modelName": "gpt-5.4-nano",
+            "temperature": "0.2",
+            "streaming": true,
+            "allowImageUploads": "",
+            "reasoning": "",
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "baseOptions": "",
+            "llmModel": "chatOpenAI"
+          },
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_3-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 194,
+      "height": 72,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 534.9069193921706,
+        "y": 573.376285010082
+      }
+    },
+    {
+      "id": "directReplyAgentflow_2",
+      "position": {
+        "x": 815.46669931918,
+        "y": 595.4842076690471
+      },
+      "data": {
+        "id": "directReplyAgentflow_2",
+        "label": "Direct Reply 2",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_2-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "{{llmAgentflow_3.output.mensaje_cliente}}"
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 815.46669931918,
+        "y": 595.4842076690471
+      },
+      "dragging": false
+    },
+    {
+      "id": "directReplyAgentflow_3",
+      "position": {
+        "x": 1593.9763666751876,
+        "y": 289.35837236973583
+      },
+      "data": {
+        "id": "directReplyAgentflow_3",
+        "label": "Direct Reply 3",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_3-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "{{llmAgentflow_5.output.reply}}",
+          "undefined": ""
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1593.9763666751876,
+        "y": 289.35837236973583
+      },
+      "dragging": false
+    },
+    {
+      "id": "directReplyAgentflow_4",
+      "position": {
+        "x": 559.2036948465712,
+        "y": -138.7616277303786
+      },
+      "data": {
+        "id": "directReplyAgentflow_4",
+        "label": "Direct Reply 4",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_4-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "En un momento te atiende una persona del equipo."
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 559.2036948465712,
+        "y": -138.7616277303786
+      }
+    },
+    {
+      "id": "directReplyAgentflow_5",
+      "position": {
+        "x": 1439.5939411147585,
+        "y": -72.18679518203723
+      },
+      "data": {
+        "id": "directReplyAgentflow_5",
+        "label": "Direct Reply 5",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_5-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "Aquí está el menú!"
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1439.5939411147585,
+        "y": -72.18679518203723
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_4",
+      "position": {
+        "x": 531.5762898472702,
+        "y": 21.49826648283826
+      },
+      "data": {
+        "id": "llmAgentflow_4",
+        "label": "AGENTE MENÚ",
+        "version": 1.1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_4-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_4-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_4-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_4-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_4-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_4-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_4-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "Eres el AGENTE MENU de I Love Fresas Barranquilla. Respondes dudas sobre productos, precios, sabores, toppings y adiciones usando solo el catalogo autorizado.\n\nNo inventes productos, precios ni disponibilidad. Si el cliente pide algo no listado, indica que debes validarlo con el equipo.\n\nTu salida debe incluir:\n\n- `mensaje_cliente`: respuesta breve para el cliente.\n- `enviar_menu`: true solo si hay que enviar menu completo/PDF.\n- `topic`: tema principal consultado.\n- `needs_human`: true si pregunta algo que requiere validacion operativa.\n\n## Comportamiento\n\n- Si el cliente pide \"menu\", \"carta\", \"PDF\" o \"menu completo\", responde breve y marca `enviar_menu=true`.\n- Si pregunta por toppings, lista toppings y precios sin enviar PDF salvo que lo pida.\n- Si pregunta por un precio especifico, responde el precio autorizado.\n- Si pregunta que venden, resume categorias: fresas y combinados, obleas, malteadas, antojitos, toppings y adiciones.\n- Si pregunta costo de domicilio, zona, cobertura, disponibilidad exacta, descuentos no listados o tiempos exactos, no inventes y marca `needs_human=true`.\n- Mantente breve, amable y orientado a ayudar a pedir.\n\n## JSON de salida\n\n```json\n\n{\n\n  \"mensaje_cliente\": \"\",\n\n  \"enviar_menu\": false,\n\n  \"topic\": \"\",\n\n  \"needs_human\": false\n\n}\n\n```\n\n## Catalogo autorizado\n\n### Fresas y combinados\n\n- Fresas con crema tradicional: 16000\n- Fresas con helado: 18000\n- Durazno con crema: 22000\n- Combinado fresa durazno con crema: 18000\n- Combinado fresa durazno con helado: 18000\n- Combinado fresa banano con crema: 16000\n- Fresas con crema de Oreo: 18000\n- Mix Oreo: 20000\n- Mix Oreo Milo: 22000\n- Fresa con crema + Oreo + Milo: 20000\n- Fresas con chocolate: 18000\n- Fresas explosion de chocolate: 18000\n- Fresas frutos rojos: 18000\n- Love Banana: 17000\n- Maracufresa: 18000\n\n### Obleas\n\n- Arequipe: 7000\n- Arequipe crema: 7000\n- Arequipe dulce de mora: 8000\n- Arequipe queso: 8000\n- Nutella: 8000\n- Arequipe crema y dulce de mora: 8000\n- Arequipe queso y crema: 8000\n- Crema y Nutella: 8000\n- Arequipe queso crema dulce de mora: 8000\n- Arequipe queso crema fresa: 8000\n- Arequipe queso crema durazno: 8000\n- Arequipe queso crema dulce de mora fresa: 8000\n- Arequipe queso crema dulce de mora durazno: 8000\n\n### Malteadas\n\n- Fresa: 15000\n- Chocolate: 15000\n- Vainilla: 15000\n- Oreo: 15000\n\n### Antojitos\n\n- Brownie con helado: 12000\n- Wafle tradicional: 15000\n- Wafle chocolate: 15000\n- Vaso fantasia: 15000\n- Pavlova: 15000\n- Vaso helado un sabor: 7000\n- Vaso helado dos sabores: 10000\n- Vaso waffle: 20000\n\n### Toppings\n\n- Leche condensada: 2000\n- Arequipe: 2000\n- Oreo: 2000\n- Merengue: 2000\n- Brownie: 2000\n- Salsa Hershey: 2000\n- Chips de chocolate negro: 2000\n- Chips de chocolate blancos: 2000\n- Chips de chocolate colores: 2000\n- Krispi: 2000\n- Milo: 2000\n- Coco: 2000\n- Choco Crispi: 2000\n- Mym: 3000\n- Chokis: 3000\n\n### Adiciones\n\n- Helado: 4000\n- Queso: 4000\n- Nutella: 4000\n- Chocorramo: 4000\n- Crema adicional: 4000\n- Barquillo: 4000\n- Cerezas: 4000\n- Arandanos: 4000\n- Dulce de mora: 3000\n\nEstado disponible:\n\nitems: {{$flow.state.items}}\n\nnombre: {{$flow.state.nombre}}\n\ndireccion: {{$flow.state.direccion}}\n\nbarrio: {{$flow.state.barrio}}\n\nreferencia: {{$flow.state.referencia}}\n\nmetodo_pago: {{$flow.state.metodo_pago}}\n\nDevuelve solo JSON valido. No incluyas markdown."
+            },
+            {
+              "role": "user",
+              "content": "{{question}} "
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "mensaje_cliente",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Respuesta breve basada exclusivamente en el catálogo dinámico."
+            },
+            {
+              "key": "enviar_menu",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "true únicamente cuando el cliente pide menú completo, carta o PDF."
+            },
+            {
+              "key": "topic",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Tema principal de la consulta de catálogo."
+            },
+            {
+              "key": "needs_human",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "true únicamente cuando hace falta una decisión operativa humana."
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "mensaje_cliente",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.mensaje_cliente\" data-label=\"output.mensaje_cliente\" data-mention-suggestion-char=\"@\">{{ output.mensaje_cliente }}</span></p>"
+            },
+            {
+              "key": "enviar_menu",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.enviar_menu\" data-label=\"output.enviar_menu\" data-mention-suggestion-char=\"@\">{{ output.enviar_menu }}</span></p>"
+            },
+            {
+              "key": "needs_human",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.needs_human\" data-label=\"output.needs_human\" data-mention-suggestion-char=\"@\">{{ output.needs_human }}</span></p>"
+            },
+            {
+              "key": "menu_topic",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.topic\" data-label=\"output.topic\" data-mention-suggestion-char=\"@\">{{ output.topic }}</span></p>"
+            }
+          ],
+          "llmModelConfig": {
+            "credential": "",
+            "modelName": "gpt-5.4-nano",
+            "temperature": "0.2",
+            "streaming": true,
+            "allowImageUploads": "",
+            "reasoning": "",
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "baseOptions": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_4-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 183,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 531.5762898472702,
+        "y": 21.49826648283826
+      },
+      "dragging": false
+    },
+    {
+      "id": "conditionAgentflow_2",
+      "position": {
+        "x": 827.342270516136,
+        "y": 5.664171553563449
+      },
+      "data": {
+        "id": "conditionAgentflow_2",
+        "label": "CONDITION ENVIAR MENÚ",
+        "version": 1,
+        "name": "conditionAgentflow",
+        "type": "Condition",
+        "color": "#FFB938",
+        "baseClasses": [
+          "Condition"
+        ],
+        "category": "Agent Flows",
+        "description": "Split flows based on If Else conditions",
+        "inputParams": [
+          {
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "array",
+            "description": "Values to compare",
+            "acceptVariable": true,
+            "default": [
+              {
+                "type": "string",
+                "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.enviar_menu\" data-label=\"$flow.state.enviar_menu\" data-mention-suggestion-char=\"@\">{{ $flow.state.enviar_menu }}</span></p>",
+                "operation": "equal",
+                "value2": "<p>true</p>"
+              }
+            ],
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "string",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Contains",
+                    "name": "contains"
+                  },
+                  {
+                    "label": "Ends With",
+                    "name": "endsWith"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Contains",
+                    "name": "notContains"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Regex",
+                    "name": "regex"
+                  },
+                  {
+                    "label": "Starts With",
+                    "name": "startsWith"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "string",
+                "default": "",
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                },
+                "hide": {
+                  "conditions[$index].operation": [
+                    "isEmpty",
+                    "notEmpty"
+                  ]
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "number",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Smaller",
+                    "name": "smaller"
+                  },
+                  {
+                    "label": "Smaller Equal",
+                    "name": "smallerEqual"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Larger",
+                    "name": "larger"
+                  },
+                  {
+                    "label": "Larger Equal",
+                    "name": "largerEqual"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "number",
+                "default": 0,
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "boolean",
+                "default": false,
+                "description": "First value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "boolean",
+                "default": false,
+                "description": "Second value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              }
+            ],
+            "id": "conditionAgentflow_2-input-conditions-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "conditions": [
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.enviar_menu\" data-label=\"$flow.state.enviar_menu\" data-mention-suggestion-char=\"@\">{{ $flow.state.enviar_menu }}</span></p>",
+              "operation": "equal",
+              "value2": "<p>true</p>"
+            }
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conditionAgentflow_2-output-0",
+            "label": "Condition",
+            "name": "conditionAgentflow"
+          },
+          {
+            "id": "conditionAgentflow_2-output-1",
+            "label": "Condition",
+            "name": "conditionAgentflow"
+          }
+        ],
+        "outputs": {
+          "conditionAgentflow": ""
+        },
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 248,
+      "height": 80,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 827.342270516136,
+        "y": 5.664171553563449
+      },
+      "dragging": false
+    },
+    {
+      "id": "directReplyAgentflow_6",
+      "position": {
+        "x": 1155.8997402985865,
+        "y": 63.72251962757079
+      },
+      "data": {
+        "id": "directReplyAgentflow_6",
+        "label": "Direct Reply 6",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_6-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "{{$flow.state.mensaje_cliente}}"
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 163,
+      "height": 66,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1155.8997402985865,
+        "y": 63.72251962757079
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_5",
+      "position": {
+        "x": 1199.6739994603713,
+        "y": 302.501755017399
+      },
+      "data": {
+        "id": "llmAgentflow_5",
+        "label": "AGENTE CONFIRMACION DE PEDIDO",
+        "version": 1.1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_5-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_5-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_5-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_5-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_5-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_5-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_5-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_5-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_5-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_5-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatXAI",
+          "llmMessages": "",
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "Eres el AGENTE CONFIRMACION DE PEDIDO de I Love Fresas Barranquilla.\nLa cotizacion validada llega dentro de <tool_result_quote> en el mensaje o en validated_quote. Nunca calcules ni cambies precios.\n\nSi recibes una cotizacion sin blockingErrors, presenta un resumen claro con items, datos, subtotal, domicilio y total, y pregunta: \"¿Está correcto para dejarlo en revisión con el equipo?\"\nSi blockingErrors no está vacío, explica brevemente qué debe corregirse y action=\"correct\".\nSi el cliente confirma explícitamente un resumen ya mostrado, action=\"confirm_order\", pedido_confirmado_por_cliente=true.\nSi corrige algo, action=\"correct\", indica si debe volver a pedido o datos.\nSi es ambiguo, action=\"unclear\" y pide confirmación breve.\nNo afirmes preparación ni despacho.\n\nEstado: items={{$flow.state.items}}, nombre={{$flow.state.nombre}}, direccion={{$flow.state.direccion}}, barrio={{$flow.state.barrio}}, referencia={{$flow.state.referencia}}, metodo_pago={{$flow.state.metodo_pago}}, validated_quote={{$flow.state.validated_quote}}\nMensaje actual: {{question}}\n\nDevuelve solo JSON válido.",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "reply",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Respuesta visible"
+            },
+            {
+              "key": "action",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "confirm_order, correct o unclear"
+            },
+            {
+              "key": "pedido_confirmado_por_cliente",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "true solo con confirmacion explicita"
+            },
+            {
+              "key": "next_expected",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "confirmacion, pedido, datos o comprobante_pago"
+            },
+            {
+              "key": "needs_human",
+              "type": "boolean",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "Solo bloqueo real"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "mensaje_cliente",
+              "value": "{{ output.reply }}"
+            },
+            {
+              "key": "stage",
+              "value": "confirmacion"
+            },
+            {
+              "key": "pedido_confirmado_por_cliente",
+              "value": "{{ output.pedido_confirmado_por_cliente }}"
+            },
+            {
+              "key": "needs_human",
+              "value": "{{ output.needs_human }}"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "grok-3-mini-fast",
+            "temperature": "0.2",
+            "streaming": true,
+            "allowImageUploads": "",
+            "maxTokens": "",
+            "llmModel": "chatXAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_5-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 314,
+      "height": 72,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1199.6739994603713,
+        "y": 302.501755017399
+      }
+    },
+    {
+      "id": "customFunctionAgentflow_0",
+      "position": {
+        "x": 227.17530806539713,
+        "y": 403.5967407149297
+      },
+      "data": {
+        "id": "customFunctionAgentflow_0",
+        "label": "GUARD DE RUTA",
+        "version": 1.1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Variables with the prefix $. For example: $foo\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get global variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_0-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": [
+            {
+              "variableName": "route",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.route\" data-label=\"$flow.state.route\" data-mention-suggestion-char=\"@\">{{ $flow.state.route }}</span></p>"
+            },
+            {
+              "variableName": "needs_human",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.needs_human\" data-label=\"$flow.state.needs_human\" data-mention-suggestion-char=\"@\">{{ $flow.state.needs_human }}</span></p>"
+            },
+            {
+              "variableName": "enviar_menu",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.enviar_menu\" data-label=\"$flow.state.enviar_menu\" data-mention-suggestion-char=\"@\">{{ $flow.state.enviar_menu }}</span></p>"
+            },
+            {
+              "variableName": "configuracion_actual",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.configuracion_actual\" data-label=\"$flow.state.configuracion_actual\" data-mention-suggestion-char=\"@\">{{ $flow.state.configuracion_actual }}</span></p>"
+            },
+            {
+              "variableName": "ultima_pregunta_bot",
+              "variableValue": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.ultima_pregunta_bot\" data-label=\"$flow.state.ultima_pregunta_bot\" data-mention-suggestion-char=\"@\">{{ $flow.state.ultima_pregunta_bot }}</span></p>"
+            },
+            {
+              "variableName": "stage",
+              "variableValue": "{{ $flow.state.stage }}"
+            },
+            {
+              "variableName": "pending_action",
+              "variableValue": "{{ $flow.state.pending_action }}"
+            }
+          ],
+          "customFunctionJavascriptFunction": "const clean = (value) => String(value || '').replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();\nconst original = clean($flow.state.route).toLowerCase() || 'general';\nconst stage = clean($flow.state.stage).toLowerCase();\nconst pending = clean($flow.state.pending_action).toLowerCase();\nconst human = clean($flow.state.needs_human).toLowerCase() === 'true';\nconst fullMenu = clean($flow.state.enviar_menu).toLowerCase() === 'true';\nlet route = original;\nif (human || original === 'escalamiento') route = 'escalamiento';\nelse if (pending === 'configure_item' || pending === 'ask_more_products') route = 'pedido';\nelse if (stage === 'confirmacion') route = 'confirmacion';\nelse if (stage === 'datos' && original === 'general') route = 'datos';\nelse if (fullMenu) route = 'menu';\n$flow.state.route = route;\nreturn route;",
+          "customFunctionUpdateState": []
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 182,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 227.17530806539713,
+        "y": 403.5967407149297
+      }
+    },
+    {
+      "id": "customFunctionAgentflow_1",
+      "position": {
+        "x": 810,
+        "y": 173
+      },
+      "data": {
+        "id": "customFunctionAgentflow_1",
+        "label": "APLICAR OPERACIONES PEDIDO",
+        "version": 1.1,
+        "name": "customFunctionAgentflow",
+        "type": "CustomFunction",
+        "color": "#E4B7FF",
+        "baseClasses": [
+          "CustomFunction"
+        ],
+        "category": "Agent Flows",
+        "description": "Execute custom function",
+        "inputParams": [
+          {
+            "label": "Input Variables",
+            "name": "customFunctionInputVariables",
+            "description": "Input variables can be used in the function with prefix $. For example: $foo",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Variable Name",
+                "name": "variableName",
+                "type": "string"
+              },
+              {
+                "label": "Variable Value",
+                "name": "variableValue",
+                "type": "string",
+                "acceptVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionInputVariables-array",
+            "display": true
+          },
+          {
+            "label": "Javascript Function",
+            "name": "customFunctionJavascriptFunction",
+            "type": "code",
+            "codeExample": "/*\n* You can use any libraries imported in Flowise\n* You can use properties specified in Input Variables with the prefix $. For example: $foo\n* You can get default flow config: $flow.sessionId, $flow.chatId, $flow.chatflowId, $flow.input, $flow.state\n* You can get global variables: $vars.<variable-name>\n* Must return a string value at the end of function\n*/\n\nconst fetch = require('node-fetch');\nconst url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true';\nconst options = {\n    method: 'GET',\n    headers: {\n        'Content-Type': 'application/json'\n    }\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}",
+            "description": "The function to execute. Must return a string or an object that can be converted to a string.",
+            "id": "customFunctionAgentflow_0-input-customFunctionJavascriptFunction-code",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "customFunctionUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "customFunctionAgentflow_0-input-customFunctionUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "customFunctionInputVariables": [
+            {
+              "variableName": "operations",
+              "variableValue": "{{ llmAgentflow_1.output.operations }}"
+            },
+            {
+              "variableName": "action",
+              "variableValue": "{{ llmAgentflow_1.output.action }}"
+            },
+            {
+              "variableName": "target_item_id",
+              "variableValue": "{{ llmAgentflow_1.output.target_item_id }}"
+            },
+            {
+              "variableName": "target_option_key",
+              "variableValue": "{{ llmAgentflow_1.output.target_option_key }}"
+            },
+            {
+              "variableName": "reply",
+              "variableValue": "{{ llmAgentflow_1.output.reply }}"
+            },
+            {
+              "variableName": "turn_context",
+              "variableValue": "{{ question }}"
+            }
+          ],
+          "customFunctionJavascriptFunction": "const clean = (value) => String(value ?? '').replace(/<[^>]*>/g, '').replace(/&quot;/g, '\"').replace(/&amp;/g, '&').trim();\nconst parse = (value, fallback) => { try { let parsed = value; for (let i = 0; i < 2 && typeof parsed === 'string'; i++) parsed = JSON.parse(clean(parsed)); return parsed ?? fallback; } catch { return fallback; } };\nconst rawTurnContext = String($turn_context ?? '').replace(/&quot;/g, '\"').replace(/&amp;/g, '&');\nconst contextCatalog = rawTurnContext.match(/<available_catalog>([\\s\\S]*?)<\\/available_catalog>/)?.[1] || '';\nconst contextState = rawTurnContext.match(/<conversation_state>([\\s\\S]*?)<\\/conversation_state>/)?.[1] || '';\nconst catalog = parse($vars.available_catalog || contextCatalog, {});\nconst externalState = parse($vars.conversation_context || contextState, {});\nconst products = Array.isArray(catalog.productos) ? catalog.productos : [];\nconst modifiers = [...(catalog.toppings || []), ...(catalog.adiciones || [])];\nlet items = parse(externalState.items ?? $vars.order_draft ?? $flow.state.items, []);\nif (!Array.isArray(items)) items = [];\nitems = items.map((item, index) => ({\n  id: item.id || item.item_id || ('legacy_' + index),\n  productId: item.productId || item.product_id || '',\n  producto: item.producto || item.productName || '',\n  quantity: Number(item.quantity || item.cantidad || 1),\n  selectedOptions: item.selectedOptions || {},\n  modifierIds: item.modifierIds || [],\n  observaciones: item.observaciones || ''\n}));\nconst ops = parse($operations, []);\nconst canonical = (value) => clean(value).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/^(prod|product)_/, '').replace(/[^a-z0-9]+/g, '');\nconst findProduct = (op) => {\n  const candidates = [op.product_id, op.productId, op.product_name, op.producto].map(canonical).filter(Boolean);\n  const matches = products.filter((product) => [product.id, product.name, ...(product.aliases || [])].map(canonical).some((value) => candidates.includes(value)));\n  return matches.length === 1 ? matches[0] : null;\n};\nlet createdSequence = 0;\nconst uniqueId = (productId) => productId + '_' + Date.now().toString(36) + '_' + (createdSequence++);\nlet changed = false;\nfor (const op of Array.isArray(ops) ? ops : []) {\n  const type = clean(op.type);\n  if (type === 'add_item') {\n    const product = findProduct(op); if (!product) continue;\n    const quantity = Math.max(1, Math.trunc(Number(op.quantity || 1)));\n    const configurable = Array.isArray(product.requiredOptions) && product.requiredOptions.length > 0;\n    const units = configurable ? quantity : 1;\n    for (let i = 0; i < units; i++) items.push({ id: uniqueId(product.id), productId: product.id, producto: product.name, quantity: configurable ? 1 : quantity, selectedOptions: {}, modifierIds: [], observaciones: '' });\n    changed = true;\n  } else if (type === 'remove_item') {\n    const before = items.length; items = items.filter((item) => item.id !== op.target_item_id); changed = changed || before !== items.length;\n  } else if (type === 'change_quantity') {\n    const item = items.find((entry) => entry.id === op.target_item_id); const product = item && products.find((p) => p.id === item.productId);\n    if (item && !(product?.requiredOptions?.length)) { item.quantity = Math.max(1, Math.trunc(Number(op.quantity || 1))); changed = true; }\n  } else if (type === 'set_required_option') {\n    const item = items.find((entry) => entry.id === op.target_item_id); const product = item && products.find((p) => p.id === item.productId);\n    const option = product?.requiredOptions?.find((entry) => entry.key === op.option_key);\n    const value = option?.options?.find((candidate) => clean(candidate).toLowerCase() === clean(op.value).toLowerCase());\n    if (item && option && value) { item.selectedOptions[option.key] = [value]; changed = true; }\n  } else if (type === 'add_modifier' || type === 'remove_modifier') {\n    const item = items.find((entry) => entry.id === op.target_item_id); const modifier = modifiers.find((entry) => entry.id === op.modifier_id);\n    if (item && modifier) { item.modifierIds = type === 'add_modifier' ? [...new Set([...item.modifierIds, modifier.id])] : item.modifierIds.filter((id) => id !== modifier.id); changed = true; }\n  } else if (type === 'correct_item') {\n    const item = items.find((entry) => entry.id === op.target_item_id); const product = findProduct(op);\n    if (item && product) { item.productId = product.id; item.producto = product.name; item.quantity = 1; item.selectedOptions = {}; item.modifierIds = []; changed = true; }\n  } else if (type === 'copy_item_configuration') {\n    const source = items.find((entry) => entry.id === op.source_item_id);\n    if (source) for (const id of op.target_item_ids || []) { const target = items.find((entry) => entry.id === id && entry.productId === source.productId); if (target) { target.selectedOptions = JSON.parse(JSON.stringify(source.selectedOptions)); target.modifierIds = [...source.modifierIds]; changed = true; } }\n  }\n}\nconst missing = [];\nfor (const item of items) {\n  const product = products.find((p) => p.id === item.productId || p.name === item.producto);\n  for (const option of product?.requiredOptions || []) if (option.required && (item.selectedOptions?.[option.key]?.length || 0) < option.minSelections) missing.push({ item, option });\n}\nconst requestedAction = clean($action) || clean(externalState.pending_action) || 'clarify';\nconst focus = missing[0] || null;\nconst action = focus ? 'configure_item' : items.length === 0 && requestedAction === 'configure_item' ? 'clarify' : requestedAction === 'collect_data' ? 'collect_data' : requestedAction === 'clarify' ? 'clarify' : 'ask_more_products';\nconst targetItemId = focus?.item.id || (action === 'configure_item' ? clean($target_item_id) || clean(externalState.target_item_id) : '');\nconst targetOptionKey = focus?.option.key || (action === 'configure_item' ? clean($target_option_key) || clean(externalState.target_option_key) : '');\nconst stage = action === 'collect_data' ? 'datos' : 'pedido';\nconst ordinalNames = ['primer', 'segundo', 'tercer', 'cuarto', 'quinto'];\nconst focusIndex = focus ? items.indexOf(focus.item) : -1;\nconst focusProduct = focus ? products.find((product) => product.id === focus.item.productId) : null;\nconst focusLabel = clean(focus?.option.label || focus?.option.key).toLowerCase();\nconst focusOptions = Array.isArray(focus?.option.options) ? focus.option.options : [];\nconst focusedReply = focus\n  ? ('Vamos con el ' + (ordinalNames[focusIndex] || ('producto ' + (focusIndex + 1))) + ' ' + (focusProduct?.name || focus.item.producto) + ' 🍓 ¿Qué ' + focusLabel + ' quieres' + (focusOptions.length ? ': ' + focusOptions.join(', ') : '') + '?')\n  : '';\nconst reply = focusedReply || clean($reply);\nitems = items.map((item) => ({ ...item, toppings: item.modifierIds.map((id) => modifiers.find((modifier) => modifier.id === id)?.name).filter(Boolean) }));\n$flow.state.items = JSON.stringify(items);\n$flow.state.stage = stage;\n$flow.state.pending_action = action;\n$flow.state.target_item_id = targetItemId;\n$flow.state.target_option_key = targetOptionKey;\n$flow.state.ultima_pregunta_bot = action === 'configure_item' ? ('pedido_opcion:' + targetItemId + ':' + targetOptionKey) : action === 'ask_more_products' ? 'pedido_otro_producto' : action === 'collect_data' ? 'datos_domicilio' : 'pedido_aclaracion';\n$flow.state.mensaje_cliente = reply;\nif (changed) $flow.state.validated_quote = '';\nreturn JSON.stringify({ items, stage, pending_action: action, target_item_id: targetItemId, target_option_key: targetOptionKey, next_expected: stage, reply, mensaje_cliente: reply });",
+          "customFunctionUpdateState": []
+        },
+        "outputAnchors": [
+          {
+            "id": "customFunctionAgentflow_1-output-customFunctionAgentflow",
+            "label": "Custom Function",
+            "name": "customFunctionAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 182,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 227.17530806539713,
+        "y": 403.5967407149297
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "llmAgentflow_0",
+      "targetHandle": "llmAgentflow_0",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-llmAgentflow_0-llmAgentflow_0"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-2",
+      "target": "llmAgentflow_1",
+      "targetHandle": "llmAgentflow_1",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "2",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-2-llmAgentflow_1-llmAgentflow_1"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-3",
+      "target": "llmAgentflow_2",
+      "targetHandle": "llmAgentflow_2",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "3",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-3-llmAgentflow_2-llmAgentflow_2"
+    },
+    {
+      "source": "llmAgentflow_2",
+      "sourceHandle": "llmAgentflow_2-output-llmAgentflow",
+      "target": "conditionAgentflow_1",
+      "targetHandle": "conditionAgentflow_1",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#FFB938",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_2-llmAgentflow_2-output-llmAgentflow-conditionAgentflow_1-conditionAgentflow_1"
+    },
+    {
+      "source": "llmAgentflow_3",
+      "sourceHandle": "llmAgentflow_3-output-llmAgentflow",
+      "target": "directReplyAgentflow_2",
+      "targetHandle": "directReplyAgentflow_2",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_3-llmAgentflow_3-output-llmAgentflow-directReplyAgentflow_2-directReplyAgentflow_2"
+    },
+    {
+      "source": "conditionAgentflow_1",
+      "sourceHandle": "conditionAgentflow_1-output-1",
+      "target": "directReplyAgentflow_1",
+      "targetHandle": "directReplyAgentflow_1",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#4DDBBB",
+        "edgeLabel": "1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_1-conditionAgentflow_1-output-1-directReplyAgentflow_1-directReplyAgentflow_1"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-4",
+      "target": "llmAgentflow_3",
+      "targetHandle": "llmAgentflow_3",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "4",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-4-llmAgentflow_3-llmAgentflow_3"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-0",
+      "target": "directReplyAgentflow_4",
+      "targetHandle": "directReplyAgentflow_4",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#4DDBBB",
+        "edgeLabel": "0",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-0-directReplyAgentflow_4-directReplyAgentflow_4"
+    },
+    {
+      "source": "httpAgentflow_0",
+      "sourceHandle": "httpAgentflow_0-output-httpAgentflow",
+      "target": "directReplyAgentflow_5",
+      "targetHandle": "directReplyAgentflow_5",
+      "data": {
+        "sourceColor": "#FF7F7F",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "httpAgentflow_0-httpAgentflow_0-output-httpAgentflow-directReplyAgentflow_5-directReplyAgentflow_5"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-1",
+      "target": "llmAgentflow_4",
+      "targetHandle": "llmAgentflow_4",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-1-llmAgentflow_4-llmAgentflow_4"
+    },
+    {
+      "source": "llmAgentflow_4",
+      "sourceHandle": "llmAgentflow_4-output-llmAgentflow",
+      "target": "conditionAgentflow_2",
+      "targetHandle": "conditionAgentflow_2",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#FFB938",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_4-llmAgentflow_4-output-llmAgentflow-conditionAgentflow_2-conditionAgentflow_2"
+    },
+    {
+      "source": "conditionAgentflow_2",
+      "sourceHandle": "conditionAgentflow_2-output-0",
+      "target": "httpAgentflow_0",
+      "targetHandle": "httpAgentflow_0",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#FF7F7F",
+        "edgeLabel": "0",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_2-conditionAgentflow_2-output-0-httpAgentflow_0-httpAgentflow_0"
+    },
+    {
+      "source": "conditionAgentflow_2",
+      "sourceHandle": "conditionAgentflow_2-output-1",
+      "target": "directReplyAgentflow_6",
+      "targetHandle": "directReplyAgentflow_6",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#4DDBBB",
+        "edgeLabel": "1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_2-conditionAgentflow_2-output-1-directReplyAgentflow_6-directReplyAgentflow_6"
+    },
+    {
+      "source": "conditionAgentflow_1",
+      "sourceHandle": "conditionAgentflow_1-output-0",
+      "target": "llmAgentflow_5",
+      "targetHandle": "llmAgentflow_5",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "0",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_1-conditionAgentflow_1-output-0-llmAgentflow_5-llmAgentflow_5"
+    },
+    {
+      "source": "llmAgentflow_5",
+      "sourceHandle": "llmAgentflow_5-output-llmAgentflow",
+      "target": "directReplyAgentflow_3",
+      "targetHandle": "directReplyAgentflow_3",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_5-llmAgentflow_5-output-llmAgentflow-directReplyAgentflow_3-directReplyAgentflow_3"
+    },
+    {
+      "source": "customFunctionAgentflow_0",
+      "sourceHandle": "customFunctionAgentflow_0-output-customFunctionAgentflow",
+      "target": "conditionAgentflow_0",
+      "targetHandle": "conditionAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#FFB938",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_0-customFunctionAgentflow_0-output-customFunctionAgentflow-conditionAgentflow_0-conditionAgentflow_0"
+    },
+    {
+      "source": "llmAgentflow_0",
+      "sourceHandle": "llmAgentflow_0-output-llmAgentflow",
+      "target": "customFunctionAgentflow_0",
+      "targetHandle": "customFunctionAgentflow_0",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#E4B7FF",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_0-llmAgentflow_0-output-llmAgentflow-customFunctionAgentflow_0-customFunctionAgentflow_0"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-5",
+      "target": "llmAgentflow_5",
+      "targetHandle": "llmAgentflow_5",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "5",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-output-5-llmAgentflow_5"
+    },
+    {
+      "source": "llmAgentflow_1",
+      "sourceHandle": "llmAgentflow_1-output-llmAgentflow",
+      "target": "customFunctionAgentflow_1",
+      "targetHandle": "customFunctionAgentflow_1",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#E4B7FF",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_1-to-customFunctionAgentflow_1"
+    },
+    {
+      "source": "customFunctionAgentflow_1",
+      "sourceHandle": "customFunctionAgentflow_1-output-customFunctionAgentflow",
+      "target": "directReplyAgentflow_0",
+      "targetHandle": "directReplyAgentflow_0",
+      "data": {
+        "sourceColor": "#E4B7FF",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "customFunctionAgentflow_1-to-directReplyAgentflow_0"
+    }
+  ]
+}
