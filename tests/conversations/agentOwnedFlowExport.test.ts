@@ -81,12 +81,15 @@ describe("Agentflow con decisiones en agentes", () => {
     expect(result.target_item_id).toBe(items[0].id);
     expect(result.target_option_key).toBe("fruit");
     expect(result.reply).toContain("fruta");
-    expect(result.reply).toContain("Para cada waffle tradicional");
-    expect(result.reply).toContain("🍓 Frutas: Fresa o Banano");
-    expect(result.reply).toContain("🍦 Helados: Fresa o Vainilla");
-    expect(result.reply).toContain("🍫 Salsas: Arequipe o Nutella");
-    expect(result.reply).toContain("Puedes enviarme todas las opciones juntas o responder una por una.");
-    expect(result.reply).toContain("Vamos con el primer waffle tradicional");
+    expect(result.reply).toContain("Para cada waffle tradicional debes elegir:");
+    expect(result.reply).toContain("🍓 Fruta: Fresa o Banano");
+    expect(result.reply).toContain("🍦 Helado: Fresa o Vainilla");
+    expect(result.reply).toContain("🍫 Salsa: Arequipe o Nutella");
+    expect(result.reply).toContain("Puedes enviarme todas las opciones juntas o responder una por una 😊");
+    expect(result.reply).toContain("Empecemos con el primer waffle tradicional 😊");
+    expect(result.reply).toContain("¿Qué fruta quieres?");
+    expect(result.reply).toContain(String.fromCharCode(8232));
+    expect(result.reply).not.toContain("\\n");
     expect(result.reply).not.toContain("Toppings:");
     expect(state.validated_quote).toBe("");
   });
@@ -124,7 +127,7 @@ describe("Agentflow con decisiones en agentes", () => {
     });
     expect(nextItems[1].selectedOptions).toEqual({});
     expect(completedFirst.result.reply.toLowerCase()).toContain("segundo waffle tradicional");
-    expect(completedFirst.result.reply).not.toContain("Para cada waffle tradicional");
+    expect(completedFirst.result.reply).not.toContain("Para cada waffle tradicional debes elegir:");
   });
 
   it("no permite pasar a datos si queda una opción obligatoria", async () => {
