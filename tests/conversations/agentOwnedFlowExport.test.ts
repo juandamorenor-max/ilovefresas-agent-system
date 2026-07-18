@@ -81,7 +81,13 @@ describe("Agentflow con decisiones en agentes", () => {
     expect(result.target_item_id).toBe(items[0].id);
     expect(result.target_option_key).toBe("fruit");
     expect(result.reply).toContain("fruta");
-    expect(result.reply).not.toContain("topping");
+    expect(result.reply).toContain("Para cada waffle tradicional");
+    expect(result.reply).toContain("🍓 Frutas: Fresa o Banano");
+    expect(result.reply).toContain("🍦 Helados: Fresa o Vainilla");
+    expect(result.reply).toContain("🍫 Salsas: Arequipe o Nutella");
+    expect(result.reply).toContain("Puedes enviarme todas las opciones juntas o responder una por una.");
+    expect(result.reply).toContain("Vamos con el primer waffle tradicional");
+    expect(result.reply).not.toContain("Toppings:");
     expect(state.validated_quote).toBe("");
   });
 
@@ -93,11 +99,21 @@ describe("Agentflow con decisiones en agentes", () => {
     const items = JSON.parse(String(initial.state.items));
     const firstId = items[0].id;
     const secondId = items[1].id;
-    const completedFirst = await apply(initial.state, [
-      { type: "set_required_option", target_item_id: firstId, option_key: "fruit", value: "Fresa" },
-      { type: "set_required_option", target_item_id: firstId, option_key: "iceCreamFlavor", value: "Fresa" },
-      { type: "set_required_option", target_item_id: firstId, option_key: "sauce", value: "Arequipe" }
-    ]);
+    const completedFirst = await apply(
+      { items: "[]", validated_quote: "" },
+      [
+        { type: "set_required_option", target_item_id: firstId, option_key: "fruit", value: "Fresa" },
+        { type: "set_required_option", target_item_id: firstId, option_key: "iceCreamFlavor", value: "Fresa" },
+        { type: "set_required_option", target_item_id: firstId, option_key: "sauce", value: "Arequipe" }
+      ],
+      "configure_item",
+      {
+        items: JSON.stringify(items),
+        pending_action: "configure_item",
+        target_item_id: firstId,
+        target_option_key: "fruit"
+      }
+    );
     expect(completedFirst.result.target_item_id).toBe(secondId);
     expect(completedFirst.result.target_option_key).toBe("fruit");
     const nextItems = JSON.parse(String(completedFirst.state.items));
@@ -107,6 +123,8 @@ describe("Agentflow con decisiones en agentes", () => {
       sauce: ["Arequipe"]
     });
     expect(nextItems[1].selectedOptions).toEqual({});
+    expect(completedFirst.result.reply.toLowerCase()).toContain("segundo waffle tradicional");
+    expect(completedFirst.result.reply).not.toContain("Para cada waffle tradicional");
   });
 
   it("no permite pasar a datos si queda una opción obligatoria", async () => {

@@ -192,10 +192,39 @@ const focusIndex = focus ? items.indexOf(focus.item) : -1;
 const focusProduct = focus ? products.find((product) => product.id === focus.item.productId) : null;
 const focusLabel = clean(focus?.option.label || focus?.option.key).toLowerCase();
 const focusOptions = Array.isArray(focus?.option.options) ? focus.option.options : [];
+const humanList = (values) => values.length < 2 ? (values[0] || '') : values.slice(0, -1).join(', ') + ' o ' + values.at(-1);
+const optionPresentation = {
+  fruit: { article: 'una fruta', heading: 'Frutas', emoji: '🍓' },
+  iceCreamFlavor: { article: 'un sabor de helado', heading: 'Helados', emoji: '🍦' },
+  sauce: { article: 'una salsa', heading: 'Salsas', emoji: '🍫' },
+  includedTopping: { article: 'un topping', heading: 'Toppings', emoji: '✨' },
+  topping: { article: 'un topping', heading: 'Toppings', emoji: '✨' }
+};
+const requiredOptions = (focusProduct?.requiredOptions || []).filter((option) => option.required);
+const sameProductItems = focus ? items.filter((item) => item.productId === focus.item.productId) : [];
+const focusUnitIndex = focus ? sameProductItems.findIndex((item) => item.id === focus.item.id) : -1;
+const previousTargetItem = items.find((item) => item.id === clean(externalState.target_item_id));
+const shouldIntroduceOptions = Boolean(focus && focusProduct && (!previousTargetItem || previousTargetItem.productId !== focus.item.productId));
+const productLabel = clean(focusProduct?.name || focus?.item.producto).toLowerCase();
+const conciseFocusedQuestion = focus
+  ? ('Vamos con el ' + (ordinalNames[focusUnitIndex] || ('producto ' + (focusUnitIndex + 1))) + ' ' + productLabel + ' 😊 ¿Qué ' + focusLabel + ' quieres?')
+  : '';
+const introReply = shouldIntroduceOptions
+  ? [
+      'Para ' + (sameProductItems.length > 1 ? 'cada ' : 'este ') + productLabel + ' debes escoger ' + humanList(requiredOptions.map((option) => (optionPresentation[option.key]?.article || ('una opción de ' + clean(option.label || option.key).toLowerCase())))) + '. 🍓',
+      ...requiredOptions.map((option) => {
+        const presentation = optionPresentation[option.key] || { heading: clean(option.label || option.key), emoji: '✨' };
+        return presentation.emoji + ' ' + presentation.heading + ': ' + humanList(Array.isArray(option.options) ? option.options : []);
+      }),
+      'Puedes enviarme todas las opciones juntas o responder una por una.',
+      '',
+      'Listo. ' + conciseFocusedQuestion
+    ].join('\\n')
+  : '';
 const focusedReply = focus
   ? ('Vamos con el ' + (ordinalNames[focusIndex] || ('producto ' + (focusIndex + 1))) + ' ' + (focusProduct?.name || focus.item.producto) + ' 🍓 ¿Qué ' + focusLabel + ' quieres' + (focusOptions.length ? ': ' + focusOptions.join(', ') : '') + '?')
   : '';
-const reply = focusedReply || clean($reply);
+const reply = introReply || focusedReply || clean($reply);
 items = items.map((item) => ({ ...item, toppings: item.modifierIds.map((id) => modifiers.find((modifier) => modifier.id === id)?.name).filter(Boolean) }));
 $flow.state.items = JSON.stringify(items);
 $flow.state.stage = stage;

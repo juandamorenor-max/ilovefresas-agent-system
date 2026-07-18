@@ -158,6 +158,13 @@ productos, opciones y modificadores contra el catalogo dinamico, separa unidades
 configurables, actualiza Flow State y genera la pregunta enfocada. No calcula
 precios ni escribe directamente una orden.
 
+Al entrar por primera vez a un producto con `requiredOptions`, el mismo Custom
+Function presenta una introduccion completa construida desde el catalogo
+dinamico: explica los campos obligatorios, muestra las opciones disponibles por
+categoria y aclara que el cliente puede responder todas juntas o una por una.
+Esta introduccion se muestra una sola vez por tipo de producto; los turnos
+siguientes preguntan unicamente el campo pendiente de la unidad enfocada.
+
 El contexto llega tanto por Override Config como por bloques
 `<available_catalog>` y `<conversation_state>`. El segundo mecanismo evita perder
 IDs y foco cuando Flow State comienza vacio en una prediccion nueva.

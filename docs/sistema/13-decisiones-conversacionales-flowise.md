@@ -87,6 +87,13 @@ add_modifier | remove_modifier | correct_item | copy_item_configuration
 Los productos configurables se separan en unidades `quantity=1`. El estado no
 comparte opciones entre unidades salvo una operacion explicita de copia.
 
+Cuando aparece el primer foco de un tipo de producto configurable,
+`APLICAR OPERACIONES PEDIDO` genera una introduccion determinista a partir de sus
+`requiredOptions`: enumera los campos y valores disponibles, permite respuestas
+completas o parciales y abre la configuracion de la primera unidad. El foco
+persistido evita repetir esa introduccion al preguntar el siguiente campo o la
+siguiente unidad del mismo producto.
+
 ## Herramientas Railway
 
 - `GET /bot/catalog/available`: productos disponibles, agotados, toppings,

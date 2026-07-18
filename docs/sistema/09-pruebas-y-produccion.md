@@ -145,3 +145,8 @@ El 2026-07-17 se ejecuto una conversacion productiva aislada: dos waffles con
 configuraciones distintas, respuesta combinada de tres opciones, avance de foco,
 pregunta de producto adicional y transicion a datos solo despues de `no`. Los
 cuatro turnos procedieron de `flowise_agentflow_agents`.
+
+El 2026-07-18 se agrego una regresion para la presentacion inicial de
+`requiredOptions`. La prueba exige que dos waffles muestren una sola vez las
+listas de frutas, helados y salsas, permitan responder juntas o por partes y que
+el turno siguiente continue con la opcion pendiente sin repetir la introduccion.
