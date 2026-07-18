@@ -32,7 +32,8 @@ async function apply(
   state: Record<string, unknown>,
   operations: unknown[],
   action = "configure_item",
-  externalState: Record<string, unknown> | null = null
+  externalState: Record<string, unknown> | null = null,
+  customerMessage = ""
 ) {
   const flowContext = { state };
   const fn = new AsyncFunction(
@@ -58,7 +59,8 @@ async function apply(
       `<available_catalog>${JSON.stringify(catalog)}</available_catalog>`,
       externalState
         ? `<conversation_state>${JSON.stringify(externalState)}</conversation_state>`
-        : ""
+        : "",
+      `<ultimo_mensaje_cliente>${customerMessage}</ultimo_mensaje_cliente>`
     ].join("\n")
   );
   return { state: flowContext.state, result: JSON.parse(raw) };
@@ -86,8 +88,8 @@ describe("Agentflow con decisiones en agentes", () => {
     expect(result.reply).toContain("🍦 Helado: Fresa o Vainilla");
     expect(result.reply).toContain("🍫 Salsa: Arequipe o Nutella");
     expect(result.reply).toContain("Puedes enviarme todas las opciones juntas o responder una por una 😊");
-    expect(result.reply).toContain("Empecemos con el primer waffle tradicional 😊");
-    expect(result.reply).toContain("¿Qué fruta quieres?");
+    expect(result.reply).toContain("Y para el primer waffle tradicional,");
+    expect(result.reply).toContain("¿Qué fruta deseas?");
     expect(result.reply).toContain(String.fromCharCode(8232));
     expect(result.reply).not.toContain("\\n");
     expect(result.reply).not.toContain("Toppings:");
@@ -174,5 +176,32 @@ describe("Agentflow con decisiones en agentes", () => {
       sauce: ["Arequipe"]
     });
     expect(nextExecution.result.items[1].selectedOptions).toEqual({});
+  });
+
+  it("muestra solo las opciones del campo pendiente cuando el cliente las pregunta", async () => {
+    const initial = await apply(
+      { items: "[]", validated_quote: "" },
+      [{ type: "add_item", product_id: "prod_waffle_tradicional", quantity: 1 }]
+    );
+    const firstId = JSON.parse(String(initial.state.items))[0].id;
+    const { result } = await apply(
+      { items: "[]", validated_quote: "" },
+      [
+        { type: "set_required_option", target_item_id: firstId, option_key: "fruit", value: "Fresa" },
+        { type: "set_required_option", target_item_id: firstId, option_key: "iceCreamFlavor", value: "Vainilla" }
+      ],
+      "configure_item",
+      {
+        items: String(initial.state.items),
+        pending_action: "configure_item",
+        target_item_id: firstId,
+        target_option_key: "iceCreamFlavor"
+      },
+      "cuales hay?"
+    );
+    expect(result.target_option_key).toBe("sauce");
+    expect(result.reply).toContain("puedes escoger salsa: Arequipe o Nutella");
+    expect(result.reply).not.toContain("Fruta:");
+    expect(result.reply).not.toContain("Helado:");
   });
 });

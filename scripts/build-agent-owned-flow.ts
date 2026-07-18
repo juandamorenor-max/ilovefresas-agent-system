@@ -121,6 +121,7 @@ const parse = (value, fallback) => { try { let parsed = value; for (let i = 0; i
 const rawTurnContext = String($turn_context ?? '').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
 const contextCatalog = rawTurnContext.match(/<available_catalog>([\\s\\S]*?)<\\/available_catalog>/)?.[1] || '';
 const contextState = rawTurnContext.match(/<conversation_state>([\\s\\S]*?)<\\/conversation_state>/)?.[1] || '';
+const customerMessage = clean(rawTurnContext.match(/<ultimo_mensaje_cliente>([\\s\\S]*?)<\\/ultimo_mensaje_cliente>/)?.[1] || rawTurnContext);
 const catalog = parse($vars.available_catalog || contextCatalog, {});
 const externalState = parse($vars.conversation_context || contextState, {});
 const products = Array.isArray(catalog.productos) ? catalog.productos : [];
@@ -207,8 +208,12 @@ const previousTargetItem = items.find((item) => item.id === clean(externalState.
 const shouldIntroduceOptions = Boolean(focus && focusProduct && (!previousTargetItem || previousTargetItem.productId !== focus.item.productId));
 const productLabel = clean(focusProduct?.name || focus?.item.producto).toLowerCase();
 const lineBreak = String.fromCharCode(8232);
+const unitLabel = focus
+  ? ((ordinalNames[focusUnitIndex] || ('producto ' + (focusUnitIndex + 1))) + ' ' + productLabel)
+  : '';
+const asksForCurrentOptions = /\\b(cuales|cu[aá]les|que|qu[eé])\\b[^\\n]{0,28}\\b(hay|tienes|opciones)\\b|\\bopciones\\b[^\\n]{0,20}\\b(hay|tienes)\\b/i.test(customerMessage);
 const focusedIntroduction = focus
-  ? ('Empecemos con el ' + (ordinalNames[focusUnitIndex] || ('producto ' + (focusUnitIndex + 1))) + ' ' + productLabel + ' 😊')
+  ? ('Y para el ' + unitLabel + ',')
   : '';
 const introReply = shouldIntroduceOptions
   ? [
@@ -222,13 +227,16 @@ const introReply = shouldIntroduceOptions
       'Puedes enviarme todas las opciones juntas o responder una por una 😊',
       '',
       focusedIntroduction,
-      '¿Qué ' + focusLabel + ' quieres?'
+      '¿Qué ' + focusLabel + ' deseas?'
     ].join(lineBreak)
   : '';
-const focusedReply = focus
-  ? ('Vamos con el ' + (ordinalNames[focusIndex] || ('producto ' + (focusIndex + 1))) + ' ' + (focusProduct?.name || focus.item.producto) + ' 🍓 ¿Qué ' + focusLabel + ' quieres' + (focusOptions.length ? ': ' + focusOptions.join(', ') : '') + '?')
+const optionsReply = focus && asksForCurrentOptions
+  ? ('Para el ' + unitLabel + ', puedes escoger ' + focusLabel + ': ' + humanList(focusOptions) + '. ¿Cuál prefieres?')
   : '';
-const reply = introReply || focusedReply || clean($reply);
+const focusedReply = focus
+  ? ('Y para el ' + unitLabel + ', ¿qué ' + focusLabel + ' deseas?')
+  : '';
+const reply = optionsReply || introReply || focusedReply || clean($reply);
 items = items.map((item) => ({ ...item, toppings: item.modifierIds.map((id) => modifiers.find((modifier) => modifier.id === id)?.name).filter(Boolean) }));
 $flow.state.items = JSON.stringify(items);
 $flow.state.stage = stage;
